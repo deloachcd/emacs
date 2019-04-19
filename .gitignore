@@ -1,0 +1,9 @@
+*.dat
+*.org
+auto-save-list/*
+backups/*
+elpa/*
+games/*
+*ido.last*
+recentf
+url/*
