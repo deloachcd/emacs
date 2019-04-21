@@ -49,12 +49,7 @@
   :ensure t
   :after org
   :config
-  (add-hook 'org-mode-hook 'evil-org-mode)
-  (add-hook 'evil-org-mode-hook
-            (lambda ()
-              (evil-org-set-key-theme)))
-  (require 'evil-org-agenda)
-  (evil-org-agenda-set-keys))
+  (require 'init-evil-org))
 
 (use-package auto-complete
   :ensure t
@@ -96,6 +91,11 @@
 (use-package magit
   :ensure t)
 
+(use-package evil-magit
+  :ensure t
+  :config
+  (requre 'evil-magit))
+
 ;; Set the default font to a nice, readable one
 (defvar default-fixed-width "Source Code Variable 14")
 (set-frame-font default-fixed-width nil t)
@@ -134,7 +134,7 @@
     ("e7b49145d311e86da34a32a7e1f73497fa365110a813d2ecd8105eaa551969da" default)))
  '(package-selected-packages
    (quote
-    (magit spaceline zeno-theme zenburn-theme yasnippet use-package twilight-theme spacemacs-theme smart-mode-line s pyvenv nlinum-relative molokai-theme moe-theme highlight-indentation helm gruvbox-theme flycheck flatland-theme find-file-in-project evil doom-themes darktooth-theme better-defaults badger-theme auto-complete))))
+    (evil-magit magit spaceline zeno-theme zenburn-theme yasnippet use-package twilight-theme spacemacs-theme smart-mode-line s pyvenv nlinum-relative molokai-theme moe-theme highlight-indentation helm gruvbox-theme flycheck flatland-theme find-file-in-project evil doom-themes darktooth-theme better-defaults badger-theme auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
