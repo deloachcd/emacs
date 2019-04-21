@@ -1,8 +1,7 @@
 ;;; .emacs --- the init file
 ;;;
 ;;; Commentary:
-;;; This is my .emacs config, which is currently simple enough to
-;;; fit in a single file (this may change in the future).
+;;; This is my .emacs config.
 ;;; Didn't want to use 'spacemacs' or 'doom-emacs' or some shit like
 ;;; that, because why not just use VSCode at that point.
 ;;;
@@ -46,6 +45,17 @@
   :config
   (require 'init-org))
 
+(use-package evil-org
+  :ensure t
+  :after org
+  :config
+  (add-hook 'org-mode-hook 'evil-org-mode)
+  (add-hook 'evil-org-mode-hook
+            (lambda ()
+              (evil-org-set-key-theme)))
+  (require 'evil-org-agenda)
+  (evil-org-agenda-set-keys))
+
 (use-package auto-complete
   :ensure t
   :config
@@ -82,6 +92,9 @@
   (require 'init-dashboard)
   :config
   (dashboard-setup-startup-hook))
+
+(use-package magit
+  :ensure t)
 
 ;; Set the default font to a nice, readable one
 (defvar default-fixed-width "Source Code Variable 14")
@@ -121,7 +134,7 @@
     ("e7b49145d311e86da34a32a7e1f73497fa365110a813d2ecd8105eaa551969da" default)))
  '(package-selected-packages
    (quote
-    (spaceline zeno-theme zenburn-theme yasnippet use-package twilight-theme spacemacs-theme smart-mode-line s pyvenv nlinum-relative molokai-theme moe-theme highlight-indentation helm gruvbox-theme flycheck flatland-theme find-file-in-project evil doom-themes darktooth-theme better-defaults badger-theme auto-complete))))
+    (magit spaceline zeno-theme zenburn-theme yasnippet use-package twilight-theme spacemacs-theme smart-mode-line s pyvenv nlinum-relative molokai-theme moe-theme highlight-indentation helm gruvbox-theme flycheck flatland-theme find-file-in-project evil doom-themes darktooth-theme better-defaults badger-theme auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
