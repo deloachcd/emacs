@@ -97,7 +97,11 @@
   (require 'evil-magit))
 
 ;; Set the default font to a nice, readable one
-(defvar default-fixed-width "Source Code Variable 14")
+(defvar default-fixed-width
+  (if (eq system-type 'darwin)
+      "Source Code Pro 14"
+    "Source Code Variable 14"))
+
 (set-frame-font default-fixed-width nil t)
 
 ;; Enable functionality I like that emacs provides out of the box
