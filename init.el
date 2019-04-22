@@ -113,17 +113,14 @@
 ;; windmove + keybinds
 (require 'init-windmove)
 
+;; indentation settings
+(require 'init-indent-settings)
+
 ;; electric-pair-mode for auto-closures
 (electric-pair-mode)
 
 ;; smoothen up the scrolling
 (setq scroll-step 1)
-
-;; behavior of tabs key
-(progn
-  ;; make indentation commands use space only (never tab character)
-  (setq-default indent-tabs-mode nil))
-(setq-default tab-width 4)
 
 
 (provide '.emacs)
