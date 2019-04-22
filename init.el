@@ -94,7 +94,7 @@
 (use-package evil-magit
   :ensure t
   :config
-  (requre 'evil-magit))
+  (require 'evil-magit))
 
 ;; Set the default font to a nice, readable one
 (defvar default-fixed-width "Source Code Variable 14")
