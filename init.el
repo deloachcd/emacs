@@ -132,7 +132,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("e7b49145d311e86da34a32a7e1f73497fa365110a813d2ecd8105eaa551969da" default)))
+    ("d2e9c7e31e574bf38f4b0fb927aaff20c1e5f92f72001102758005e53d77b8c9" "6b2636879127bf6124ce541b1b2824800afc49c6ccd65439d6eb987dbf200c36" "e7b49145d311e86da34a32a7e1f73497fa365110a813d2ecd8105eaa551969da" default)))
  '(package-selected-packages
    (quote
     (evil-magit magit spaceline zeno-theme zenburn-theme yasnippet use-package twilight-theme spacemacs-theme smart-mode-line s pyvenv nlinum-relative molokai-theme moe-theme highlight-indentation helm gruvbox-theme flycheck flatland-theme find-file-in-project evil doom-themes darktooth-theme better-defaults badger-theme auto-complete))))
