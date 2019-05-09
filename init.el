@@ -315,15 +315,18 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (with-eval-after-load 'org
-    (setq org-agenda-files '("~/Documents/org/micfo.org")))
+    (setq org-agenda-files '("~/Dropbox/org/life.org")))
   (setq powerline-default-seperator nil)
   (setq projectile-project-search-path '("~/Projects"
-                                         "~/Documents/org"
+                                         "~/Dropbox/org"
                                          "~/.spacemacs.d/"))
   (global-hl-line-mode 0)
   (custom-theme-set-faces
         'dorsey
-        '(show-paren-match ((t (:foreground "white" :background "purple")))))
+        '(show-paren-match ((t (:foreground "white" :background "purple"))))
+        '(ac-completion-face ((t (:foreground "white" :background "cyan"))))
+        '(ac-selection-face ((t (:foreground "white" :background "cyan"))))
+        '(ac-candidate-face ((t (:foreground "white" :background "purple")))))
   (setq flycheck-python-pycompile-executable "python3")
   (setq flycheck-python-flake8-executable "python3")
   )
