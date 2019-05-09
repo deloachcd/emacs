@@ -146,12 +146,8 @@ values."
                                  :width normal
                                  :powerline-scale 1.1))
 
-   ;; The leader key
    dotspacemacs-leader-key "SPC"
-   ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
-   ;; (default "SPC")
    dotspacemacs-emacs-command-key "SPC"
-   ;; The key used for Vim Ex commands (default ":")
    dotspacemacs-ex-command-key ":"
    ;; The leader key accessible in `emacs state' and `insert state'
    ;; (default "M-m")
@@ -328,6 +324,8 @@ you should place your code here."
   (custom-theme-set-faces
         'dorsey
         '(show-paren-match ((t (:foreground "white" :background "purple")))))
+  (setq flycheck-python-pycompile-executable "python3")
+  (setq flycheck-python-flake8-executable "python3")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
