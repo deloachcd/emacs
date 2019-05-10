@@ -1,5 +1,4 @@
 *.dat
-*.org
 auto-save-list/*
 backups/*
 elpa/*

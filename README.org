@@ -1,3 +1,4 @@
+[[./screenshot.png]]
 * Spacemacs config
 Turns out, I can get a great emacs config faster with spacemacs
 than doing it forom 'scratch' with evil mode + 'init.el'.
