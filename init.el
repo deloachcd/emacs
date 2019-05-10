@@ -329,6 +329,7 @@ you should place your code here."
         '(ac-candidate-face ((t (:foreground "white" :background "purple")))))
   (setq flycheck-python-pycompile-executable "python3")
   (setq flycheck-python-flake8-executable "python3")
+  (setq python-shell-interpreter "python3")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
