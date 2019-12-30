@@ -1,3 +1,14 @@
+<<<<<<< HEAD
 *~
 elpa/
 auto-save-list/
+=======
+*.dat
+auto-save-list/*
+backups/*
+elpa/*
+games/*
+*ido.last*
+recentf
+url/*
+>>>>>>> f0c7021cb7e915186da07d2d59a33332b97fae00
