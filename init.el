@@ -130,6 +130,9 @@
 ;; ivy
 (counsel-mode 1)
 
+;; other mode switches
+(menu-bar-mode -1)
+
 ;; TODO: clojure / cider
 ;; TODO: organize configuration into layers
 
