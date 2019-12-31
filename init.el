@@ -6,11 +6,12 @@
 
 ;; List packages for install
 (setq package-list '(undo-tree
-		     evil
+                     evil
                      evil-leader
                      general
-		     ivy
-		     projectile))
+                     ivy
+		     counsel
+                     projectile))
 
 ;; Add Melpa as the default Emacs Package repository
 ;; only contains a very limited number of packages
@@ -19,18 +20,21 @@
     ("melpa" . "https://melpa.org/packages/")
     ("melpa-stable" . "https://stable.melpa.org/packages/")))
 
-;; Activate all the packages (in particular autoloads)
-(package-initialize)
-
 ;; Update your local package index
-;;(package-refresh-contents)
 (unless package-archive-contents
   (package-refresh-contents))
+
+;; Activate all the packages (in particular autoloads)
+(package-initialize)
 
 ;; Install all missing packages
 (dolist (package package-list)
   (unless (package-installed-p package)
     (package-install package)))
+
+;; user config settings
+(setq
+ auto-window-vscroll nil)
 
 ;; evil mode
 
@@ -61,7 +65,8 @@
   :states '(normal emacs)
   :keymaps 'override)
 (help
-  "k" 'describe-key)
+  "k" 'describe-key
+  "f" 'describe-function)
 
 ;; window management keybindings
 (general-create-definer windows
@@ -87,6 +92,7 @@
  "p" 'previous-buffer
  "k" 'kill-buffer)
 
+;; elisp evaluation
 (general-create-definer elisp-eval
   :prefix "SPC e"
   :states '(normal emacs visual)
@@ -105,12 +111,13 @@
   :states '(normal emacs)
   :keymaps 'override)
 (files
+  "f" 'counsel-find-file
   "eR" 'dotfile-reload)
 
 ;; projectile
-(setq projectile-project-search-path
-      '("~/.emacs.d"
-	"~/Projects"))
+(setq projectile-project-search-path '("~")
+      projectile-completion-system 'ivy)
+(projectile-mode 1)
 
 (general-create-definer projectile
   :prefix "SPC p"
@@ -120,11 +127,11 @@
  "f" 'projectile-find-file
  "p" 'projectile-switch-project)
 
+;; ivy
+(counsel-mode 1)
 
-;; TODO: general-evil-definer
 ;; TODO: clojure / cider
-;; TODO: ivy integration
-;; TODO: counsel
+;; TODO: organize configuration into layers
 
 ;; | {}{}{}{}{}{}{}{}{}{}{}{}{}{} |
 ;; | no manual editing below here |
@@ -134,7 +141,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (evil-leader evil undo-tree))))
+ '(package-selected-packages (quote (counsel evil-leader evil undo-tree))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
