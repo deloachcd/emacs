@@ -1,12 +1,16 @@
 ;; Temporary fix for 'undo-tree' signature issue upstream
-(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+(if (string= emacs-version "26.1")
+    (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 
 (require 'package)
 
 ;; List packages for install
-(setq package-list '(evil
+(setq package-list '(undo-tree
+		     evil
                      evil-leader
-		     general))
+                     general
+		     ivy
+		     projectile))
 
 ;; Add Melpa as the default Emacs Package repository
 ;; only contains a very limited number of packages
@@ -29,6 +33,11 @@
     (package-install package)))
 
 ;; evil mode
+
+;; make sure nothing can override evil keybinds
+(setq evil-overriding-maps nil
+      evil-intercept-maps nil)
+
 (require 'evil)
 (require 'evil-leader)
 (global-evil-leader-mode)
@@ -41,7 +50,7 @@
 ;; global keybindings
 (general-create-definer globals
   :prefix "SPC"
-  :states 'normal
+  :states '(normal emacs)
   :keymaps 'override)
 (globals
  "SPC" 'execute-extended-command)
@@ -49,15 +58,15 @@
 ;; help keybindings
 (general-create-definer help
   :prefix "SPC h"
-  :states 'normal
+  :states '(normal emacs)
   :keymaps 'override)
 (help
   "k" 'describe-key)
 
-;; Window management keybindings
+;; window management keybindings
 (general-create-definer windows
   :prefix "SPC w"
-  :states 'normal
+  :states '(normal emacs)
   :keymaps 'override)
 (windows
   "/" 'split-window-right
@@ -67,11 +76,53 @@
   "k" 'windmove-up
   "l" 'windmove-right)
 
+;; buffers
+(general-create-definer buffers
+  :prefix "SPC b"
+  :states '(normal emacs)
+  :keymaps 'override)
+(buffers
+ "b" 'ivy-switch-buffer
+ "n" 'next-buffer
+ "p" 'previous-buffer
+ "k" 'kill-buffer)
+
+(general-create-definer elisp-eval
+  :prefix "SPC e"
+  :states '(normal emacs visual)
+  :keymaps 'override)
+(elisp-eval
+ "b" 'eval-buffer
+ "l" 'eval-last-sexp
+ "r" 'eval-region)
+
+(defun dotfile-reload ()
+  (interactive)
+  (load-file "~/.emacs.d/init.el"))
+
+(general-create-definer files
+  :prefix "SPC f"
+  :states '(normal emacs)
+  :keymaps 'override)
+(files
+  "eR" 'dotfile-reload)
+
+;; projectile
+(setq projectile-project-search-path
+      '("~/.emacs.d"
+	"~/Projects"))
+
+(general-create-definer projectile
+  :prefix "SPC p"
+  :states '(normal emacs)
+  :keymaps 'override)
+(projectile
+ "f" 'projectile-find-file
+ "p" 'projectile-switch-project)
+
+
 ;; TODO: general-evil-definer
-;; TODO: files
-;; TODO: buffers
 ;; TODO: clojure / cider
-;; TODO: projectile
 ;; TODO: ivy integration
 ;; TODO: counsel
 
