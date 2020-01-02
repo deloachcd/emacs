@@ -92,15 +92,43 @@
  "p" 'previous-buffer
  "k" 'kill-buffer)
 
-;; elisp evaluation
+;; language evaluation
+(defun ensure-newline (string)
+  "Ensure string ends in a newline."
+  (if (string= (substring string -1) "\n")
+      string
+    (concat string "\n")))
+
+(defun eval-buffer-sh ()
+  (interactive)
+  (process-send-string "*shell*"
+		       (ensure-newline (buffer-string))))
+
+(defun eval-region-sh ()
+  (interactive)
+  (process-send-string "*shell*"
+		       (ensure-newline (buffer-substring
+					(region-beginning) (region-end)))))
+
+(defun eval-line-sh ()
+  (interactive)
+  (process-send-string "*shell*"
+		       (ensure-newline (thing-at-point 'line))))
+
 (general-create-definer elisp-eval
   :prefix "SPC e"
   :states '(normal emacs visual)
   :keymaps 'override)
 (elisp-eval
- "b" 'eval-buffer
- "l" 'eval-last-sexp
- "r" 'eval-region)
+  ;; elisp
+  "eb" 'eval-buffer
+  "el" 'eval-last-sexp
+  "er" 'eval-region
+  ;; bash
+  "bb" 'eval-buffer-sh
+  "br" 'eval-region-sh
+  "bl" 'eval-line-sh
+  )
 
 (defun dotfile-reload ()
   (interactive)
@@ -112,7 +140,7 @@
   :keymaps 'override)
 (files
   "f" 'counsel-find-file
-  "eR" 'dotfile-reload)
+  "dR" 'dotfile-reload)
 
 ;; projectile
 (setq projectile-project-search-path '("~")
