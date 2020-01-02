@@ -33,26 +33,20 @@
     (package-install package)))
 
 ;; add paths to our custom stuff in .emacs.d
-(add-to-list 'load-path "~/.emacs.d/init-layers")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(add-to-list 'load-path "~/.emacs.d/init-layers") ; config layers
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes") ; custom themes
 
-;; user config settings
-(load-theme 'badger t)
-(counsel-mode 1)
-(menu-bar-mode -1)
-
-;; configuration layers
+;; config layers
 (require 'evil-layer)
-(require 'global-layer)
-(require 'help-layer)
-(require 'window-layer)
-(require 'buffer-layer)
-(require 'eval-layer) ; arbitrary language evaluation
-(require 'file-layer)
-(require 'projectile-layer)
+(require 'general-layer)    ; SPC
+(require 'help-layer)       ; SPC-h
+(require 'window-layer)     ; SPC-w
+(require 'buffer-layer)     ; SPC-b
+(require 'eval-layer)       ; SPC-e
+(require 'file-layer)       ; SPC-f
+(require 'projectile-layer) ; SPC-p
 
 ;; TODO: clojure / cider
-;; TODO: organize configuration into layers
 
 ;; | {}{}{}{}{}{}{}{}{}{}{}{}{}{} |
 ;; | no manual editing below here |
