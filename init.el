@@ -11,7 +11,9 @@
                      general
                      ivy
 		     counsel
-                     projectile))
+                     projectile
+		     clojure-mode
+		     cider))
 
 ;; Add Melpa as the default Emacs Package repository
 ;; only contains a very limited number of packages
@@ -40,9 +42,10 @@
 (require 'evil-layer)
 (require 'general-layer)    ; SPC
 (require 'help-layer)       ; SPC-h
-(require 'window-layer)     ; SPC-w
 (require 'buffer-layer)     ; SPC-b
-(require 'eval-layer)       ; SPC-e
+(require 'window-layer)     ; SPC-w
+(require 'sh-layer)         ; SPC-s
+(require 'clojure-layer)    ; SPC-j
 (require 'file-layer)       ; SPC-f
 (require 'projectile-layer) ; SPC-p
 
@@ -56,7 +59,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (counsel evil-leader evil undo-tree))))
+ '(package-selected-packages
+   (quote
+    (cider clojure-mode counsel evil-leader evil undo-tree))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

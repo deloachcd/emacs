@@ -1,4 +1,4 @@
-(provide 'eval-layer)
+(provide 'sh-layer)
 
 (defun ensure-newline (string)
   "Ensure string ends in a newline."
@@ -6,33 +6,31 @@
       string
     (concat string "\n")))
 
-(defun eval-buffer-sh ()
+(defun sh-eval-buffer ()
   (interactive)
   (process-send-string "*shell*"
 		       (ensure-newline (buffer-string))))
 
-(defun eval-region-sh ()
+(defun sh-eval-region ()
   (interactive)
   (process-send-string "*shell*"
 		       (ensure-newline (buffer-substring
 					(region-beginning) (region-end)))))
 
-(defun eval-line-sh ()
+(defun sh-eval-line ()
   (interactive)
   (process-send-string "*shell*"
 		       (ensure-newline (thing-at-point 'line))))
 
-(general-create-definer lang-eval
-  :prefix "SPC e"
+(general-create-definer sh
+  :prefix "SPC s"
   :states '(normal emacs visual)
   :keymaps 'override)
-(lang-eval
-  ;; elisp
-  "eb" 'eval-buffer
-  "el" 'eval-last-sexp
-  "er" 'eval-region
-  ;; bash
-  "bb" 'eval-buffer-sh
-  "br" 'eval-region-sh
-  "bl" 'eval-line-sh
-  )
+
+(sh
+ "m" 'sh-mode
+ "se" 'eshell
+ "ss" 'shell
+ "eb" 'sh-eval-buffer
+ "el" 'sh-eval-line
+ "er" 'sh-eval-region)
