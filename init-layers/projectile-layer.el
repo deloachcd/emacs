@@ -1,14 +1,14 @@
 (provide 'projectile-layer)
 
-(setq projectile-project-search-path '("~")
-      projectile-completion-system 'ivy)
+(use-package projectile
+  :init (setq projectile-project-search-path '("~")
+	      projectile-completion-system 'ivy)
+  :config (projectile-mode 1))
 
-(general-create-definer projectile
+(general-create-definer projectile-bindings
   :prefix "SPC p"
   :states '(normal emacs)
   :keymaps 'override)
-(projectile
+(projectile-bindings
  "f" 'projectile-find-file
  "p" 'projectile-switch-project)
-
-(projectile-mode 1)
