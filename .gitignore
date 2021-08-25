@@ -2,5 +2,14 @@
 elpa/
 auto-save-list/
 projectile-bookmarks*
+projectile.cache
 **/#*#
-eshell/
+eshell/*
+recentf
+backups/
+org-roam.db
+custom.el
+.lsp-session-v1
+.org-id-locations
+bookmarks
+transient

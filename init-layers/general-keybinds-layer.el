@@ -1,5 +1,9 @@
 (provide 'general-keybinds-layer)
 
+;; Keybindings not in this file:
+;; org-mode and org-roam bindings are defined in org-layer.el
+;; magit bindings are defined in magit-layer.el
+
 ;; Bail out of prompts with ESC
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
@@ -28,13 +32,14 @@
 ;; TODO: SPC e as general eval layer, not just elisp
 (general-create-definer elisp-bindings
   :prefix "SPC e"
-  :states '(normal emacs)
+  :states '(normal emacs visual)
   :keymaps 'override)
 
 (elisp-bindings
   "b" 'eval-buffer
   "s" 'eval-last-sexp
-  "r" 'eval-region)
+  "r" 'eval-region
+  "i" 'indent-pp-sexp)
 
 (general-create-definer buffer-management-bindings
   :prefix "SPC b"
