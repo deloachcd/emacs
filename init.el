@@ -43,15 +43,15 @@
 ;; Minibuffer completion layer - autocompletion in minibuffer
 (require 'minibuffer-completion-layer)
 
-;; IDE layer - configuration for emacs to act as an IDE, with
-;;             lsp-mode and language-specific configuration
-;;             done here
-(require 'ide-layer)
-
 ;; General keybinds layer - general use keybindings for accessing
 ;; built-in emacs functionality, much of which is mapped by
 ;; default to C-x <keys>
 (require 'general-keybinds-layer)
+
+;; IDE layer - configuration for emacs to act as an IDE, with
+;;             lsp-mode and language-specific configuration
+;;             done here
+(require 'ide-layer)
 
 ;; Project layer - configuration related to project management
 ;; through projectile
@@ -78,3 +78,6 @@
                                 customize-changed-options customize-save-customized))
   (put sym 'disabled "This emacs doesn't support `customize', configure Emacs from ~/.emacs.d/ instead"))
 (put 'customize-themes 'disabled "Not supported, use `load-theme' instead")
+
+;; Send "custom-set-variables" output to hell
+(setq custom-file null-device)
