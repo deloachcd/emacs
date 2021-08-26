@@ -7,27 +7,17 @@
 ;; Bail out of prompts with ESC
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
-;; Window navigation bindings commonly need to be entered more
-;; than once to get to the right window, so all window-related bindings
-;; are Alt bindings without multiple keystrokes
-(global-set-key (kbd "M-/") 'split-window-right)
-(global-set-key (kbd "M--") 'split-window-below)
-(global-set-key (kbd "M-h") 'windmove-left)
-(global-set-key (kbd "M-j") 'windmove-down)
-(global-set-key (kbd "M-k") 'windmove-up)
-(global-set-key (kbd "M-l") 'windmove-right)
-
 ;; General provides a unified interface for key definitions,
 ;; perfect for spacemacs-style bindings with evil mode
 (use-package general)
 
 (general-create-definer root-bindings
   :prefix "SPC"
-  :states '(normal emacs)
+  :states '(normal emacs visual)
   :keymaps 'override)
 
 (root-bindings
- "SPC" 'execute-extended-command)
+  "SPC" 'execute-extended-command)
 
 ;; TODO: SPC e as general eval layer, not just elisp
 (general-create-definer elisp-bindings
@@ -46,10 +36,10 @@
   :states '(normal emacs)
   :keymaps 'override)
 (buffer-management-bindings
- "s" 'ivy-switch-buffer
- "n" 'next-buffer
- "p" 'previous-buffer
- "k" 'kill-buffer)
+  "s" 'ivy-switch-buffer
+  "n" 'next-buffer
+  "p" 'previous-buffer
+  "k" 'kill-buffer)
 
 (defun dotfile-reload ()
   "Reloads emacs configuration from init.el"
@@ -79,9 +69,9 @@
   :states '(normal emacs visual)
   :keymaps 'override)
 (shell-bindings
- "m" 'sh-mode
- "e" 'eshell
- "s" 'shell)
+  "m" 'sh-mode
+  "e" 'eshell
+  "s" 'shell)
 
 ;; these are here for the sake of consistency - Alt bindings
 ;; ought to be more commonly used for their convenience

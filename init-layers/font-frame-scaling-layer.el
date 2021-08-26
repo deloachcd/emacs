@@ -48,5 +48,5 @@
         (when window-system (set-frame-size (selected-frame) frame-width frame-height)))))
 
 ;; We call our functions to apply their changes here
-(set-fonts-from-display-resolution "FiraCode" "Noto Sans")
+(set-fonts-from-display-resolution "Fira Code" "Noto Sans")
 (set-frame-defaults 108 42)

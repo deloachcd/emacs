@@ -129,6 +129,7 @@
   "l p" 'org-mark-ring-goto
   ;; checking boxes
   "t b" 'org-toggle-checkbox
+  "t i" 'org-toggle-inline-images
   ;; editing source code
   "e c" 'org-edit-special
   ;; switch to tasks file

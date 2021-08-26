@@ -35,10 +35,14 @@
 (add-hook 'python-mode-hook 'python-mode-hook-additions)
 
 ;; LSP keybinds
-(general-create-definer lsp-bindings
+(general-create-definer language-bindings
   :prefix "SPC l"
   :states '(normal emacs)
   :keymaps 'override)
 
-(lsp-bindings
-  "d" 'lsp-ui-doc-mode)
+(language-bindings
+  ;; Python bindings
+  "p r" 'run-python
+  "p m" 'python-mode
+  "p s b" 'python-shell-send-buffer
+  "p s r" 'python-shell-send-region)

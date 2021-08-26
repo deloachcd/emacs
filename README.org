@@ -1,0 +1,31 @@
+* emacs
+  [[./res/img/capture.png]]
+  
+  This repository hosts my emacs config, which is best deployed in a Linux environment with my [[https://github.com/deloachcd/portapotty][Portapotty]]
+  script.
+  
+** Mnemonic bindings
+   This config uses a [[https://github.com/noctuid/general.el][general.el]]-based scheme of mnemoic bindings associated with configuration layers
+   that I essentially ripped off from [[https://github.com/syl20bnr/spacemacs][spacemacs]].
+   
+   | SPC- binding | Mnemonic   | Configuration layer (in init-layers) |
+   |--------------+------------+--------------------------------------|
+   | e            | eval-elisp | general-keybinds-layer               |
+   | b            | buffers    | general-keybinds-layer               |
+   | f            | files      | general-keybinds-layer               |
+   | h            | help       | general-keybinds-layer               |
+   | s            | shell      | general-keybinds-layer               |
+   | w            | window     | general-keybinds-layer               |
+   | p            | projectile | projectile-layer                     |
+   | o            | org-mode   | org-layer                            |
+   | g            | git        | magit-layer                          |
+   | l            | languages  | ide-layer                            |
+
+   The "languages" binding ~SPC-l~ has its own set of prefixes:
+   | Prefix | Language |
+   |--------+----------|
+   | b      | bash     |
+   | p      | python   |
+   | r      | ruby     |
+   | c      | C        |
+   | +      | C++      |
