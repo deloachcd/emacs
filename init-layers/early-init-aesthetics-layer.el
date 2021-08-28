@@ -44,7 +44,7 @@
 
       (cond (;; 4k
              (string-equal resolution "3840x2160")
-             (set-fonts-from-heights 150 150))
+             (set-fonts-from-heights 125 135))
 
             ;; 1080p
             ((string-equal resolution "1920x1080")

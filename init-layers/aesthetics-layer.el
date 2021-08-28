@@ -14,5 +14,7 @@
   (dashboard-setup-startup-hook))
 
 (use-package doom-modeline
-  :init (setq doom-modeline-icon nil)
+  :init
+  (setq doom-modeline-icon nil)
+  (setq doom-modeline-height 30)
   :config (doom-modeline-mode 1))
