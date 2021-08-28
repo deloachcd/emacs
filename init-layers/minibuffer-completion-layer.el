@@ -5,7 +5,8 @@
 ;; counsel-mode pulls in ivy-specific replacements for emacs
 ;; system functions
 (use-package counsel
-  :config (counsel-mode 1))
+  :config
+  (ivy-mode 1))
 
 ;; Provides suggestions for available keybinds as you type
 (use-package which-key
