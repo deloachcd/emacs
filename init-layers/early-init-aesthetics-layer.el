@@ -1,4 +1,19 @@
-(provide 'font-frame-scaling-layer)
+;; This layer is for disabling GUI elements, loading our preferred color theme
+;; and scaling fonts properly before package refresh.
+(provide 'early-init-aesthetics-layer)
+
+;; Disable GUI toolbars
+(scroll-bar-mode -1)
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(tooltip-mode -1)
+
+;; Slight padding for content in frame
+(set-fringe-mode 10)
+
+;; Load theme from ~/.emacs.d/themes
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(load-theme 'zenburn t)
 
 ;; This function is used to set the fixed and variable pitch fonts, with font
 ;; size being set relative to display resolution. There's no formula for this

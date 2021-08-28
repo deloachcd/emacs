@@ -1,9 +1,8 @@
+;; This layer is for parts of the aesthetic configuration of this
+;; emacs which leverage packages pulled from external sources
+;; after package refresh.
 (provide 'aesthetics-layer)
 
-;; Load our theme properly now that we have a full GUI
-(load-theme 'zenburn t)
-
-;; Splash screen displayed on startup
 (use-package dashboard
   :init
   (setq dashboard-startup-banner "~/.emacs.d/res/img/zenmacs.png")

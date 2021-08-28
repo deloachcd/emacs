@@ -1,3 +1,5 @@
+;; Configuration related to git integration with magit.
+(require 'general-keybinds-layer)
 (provide 'magit-layer)
 
 (use-package magit)
@@ -8,5 +10,5 @@
   :keymaps 'override)
 
 (magit-bindings
- "s" 'magit-status
- "c" 'with-editor-finish)
+  "s" 'magit-status
+  "c" 'with-editor-finish)

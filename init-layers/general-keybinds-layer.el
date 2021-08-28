@@ -1,3 +1,10 @@
+;; This layer provides SPC bindings for many common "emacs system"
+;; bindings prefixed by C-x, along with general.el for defining
+;; keybindings related to a specific configuration layer's
+;; provided functionality.
+;;
+;; Every configuration layer that defines its own bindings with
+;; general.el should `require' this layer
 (provide 'general-keybinds-layer)
 
 ;; Keybindings not in this file:

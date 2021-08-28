@@ -1,3 +1,5 @@
+;; Configuration related to project management with projectile.
+(require 'general-keybinds-layer)
 (provide 'projectile-layer)
 
 (use-package projectile

@@ -1,13 +1,11 @@
-(provide 'editing-layer)
-;; This is the primary configuration layer for customizing how emacs
-;; behaves as a text editor, mainly through tweaking its own defaults
-;; and evil-mode.
+;; Configuration related to the general behavior of emacs as a
+;; text editor for both text files and source code files, making
+;; heavy use of evil-mode because I can't live in a text editor
+;; without vim bindings.
 ;;
 ;; Much of the ideas here are taken from Witchmacs, by snackon:
 ;; https://github.com/snackon/Witchmacs
-
-;; TODO: surround.vim equivalent
-;; TODO: leader keybindings - emacs from scratch episode 3
+(provide 'editing-layer)
 
 ;; Vim-like bindings
 (use-package evil

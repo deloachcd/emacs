@@ -6,15 +6,18 @@
 ;; The bulk of our configuration happens in these files
 (add-to-list 'load-path "~/.emacs.d/init-layers")
 
-;; Font configuration and default frame sizing happens here
-(require 'font-frame-scaling-layer)
+;; This allows loading local config layers from a list
+(defun load-config-layers (layers)
+  (defun get-layer-path (layer-name)
+    (concat (symbol-name layer-name) "-layer.el"))
+  (dolist (layer layers)
+    (load (get-layer-path layer))))
 
-;; Some pastebin code that's supposed to speed up startup
-;; through roiding up the garbage collector or something
-(setq startup/gc-cons-threshold gc-cons-threshold)
-(setq gc-cons-threshold most-positive-fixnum)
-(defun startup/reset-gc () (setq gc-cons-threshold startup/gc-cons-threshold))
-(add-hook 'emacs-startup-hook 'startup/reset-gc)
+;; This layer is loaded before package refresh, because
+;; it can take a bit and this looks much nicer than
+;; waiting for theming to load
+(setq early-init-config-layers '(early-init-aesthetics))
+(load-config-layers early-init-config-layers)
 
 ;; Ensure our package archives are up-to-date and load the
 ;; package manager
@@ -34,34 +37,17 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-;; Aesthetics layer - configuration related to theming & fonts
-(require 'aesthetics-layer)
+;; The bulk of configuration happens in these layers
+(setq init-config-layers '(aesthetics
+                           editing
+                           minibuffer-completion
+                           general-keybinds
+                           ide
+                           projectile
+                           org
+                           magit))
 
-;; Editing layer - configuration related to text editing
-(require 'editing-layer)
-
-;; Minibuffer completion layer - autocompletion in minibuffer
-(require 'minibuffer-completion-layer)
-
-;; General keybinds layer - general use keybindings for accessing
-;; built-in emacs functionality, much of which is mapped by
-;; default to C-x <keys>
-(require 'general-keybinds-layer)
-
-;; IDE layer - configuration for emacs to act as an IDE, with
-;;             lsp-mode and language-specific configuration
-;;             done here
-(require 'ide-layer)
-
-;; Project layer - configuration related to project management
-;; through projectile
-(require 'projectile-layer)
-
-;; Org layer - configuration related to org-mode
-(require 'org-layer)
-
-;; Magit layer - configuration related to git integration
-(require 'magit-layer)
+(load-config-layers init-config-layers)
 
 ;; I lifted some code from DOOM emacs to disable customize, because they're
 ;; right on the money about `customize' being "a clumsy interface that

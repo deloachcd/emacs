@@ -1,3 +1,5 @@
+;; Configuration related to org-mode, org-roam, etc.
+(require 'general-keybinds-layer)
 (provide 'org-layer)
 
 ;; Where we'll store all our org documents
@@ -77,7 +79,7 @@
 ;; Hopefully, fix messed up indentation in source code blocks
 (setq org-src-fontify-natively t
       org-src-strip-leading-and-trailing-blank-lines t
-      org-src-tab-acts-natively t)
+      org-src-preserve-indentation t)
 
 ;; Source: http://wenshanren.org/?p=334
 (defun org-insert-src-block (src-code-type)

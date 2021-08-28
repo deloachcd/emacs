@@ -1,5 +1,10 @@
+;; This layer is for two things:
+;; 1. Configuration related to lsp-mode
+;; 2. Configuration related to specific languages & their modes
+;;
+;; Anything configuration that depends on lsp-mode needs to
+;; `require' this one.
 (provide 'ide-layer)
-
 
 ;; Primary autocompletion engine
 (use-package company)
