@@ -3,7 +3,7 @@
 (provide 'org-layer)
 
 ;; Where we'll store all our org documents
-(setq org-root "~/Sync/Documents/org")
+(setq org-root (file-truename "~/Sync/Documents/org"))
 
 ;; Automagically mix variable and monospace fonts
 (use-package mixed-pitch
@@ -52,8 +52,11 @@
   :custom
   (org-roam-directory (concat org-root "/roam"))
   (org-roam-dailies-directory "journal/")
+  (org-roam-db-location
+   (expand-file-name (concat "org-roam." (system-name) ".db")
+                     org-roam-directory))
   :config
-  (org-roam-setup)
+  (org-roam-db-autosync-enable)
   (setq org-M-RET-may-split-line nil))
 
 (use-package evil-org
