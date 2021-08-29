@@ -118,7 +118,7 @@
 
 (org-bindings
   ;; insertion
-  ;; "i i" 'org-insert-item        DEPRECATED: use RET instead
+  ;; "i i" 'org-insert-item        DEPRECATED: use M-RET instead
   ;; "i h" 'org-insert-heading     DEPRECATED: use O instead
   ;; "i s" 'org-insert-subheading  DEPRECATED: use M-O instead
   "i l" 'org-insert-link
