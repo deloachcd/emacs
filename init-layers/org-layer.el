@@ -3,7 +3,7 @@
 (provide 'org-layer)
 
 ;; Where we'll store all our org documents
-(setq org-root (file-truename "~/Sync/Documents/org"))
+(setq org-root "~/Sync/Documents/org")
 
 ;; Automagically mix variable and monospace fonts
 (use-package mixed-pitch
@@ -65,8 +65,7 @@
   :config
   (progn
     (require 'evil-org-agenda)
-    (evil-org-set-key-theme '(return
-                              textobjects
+    (evil-org-set-key-theme '(textobjects
                               insert
                               navigation
                               additional
