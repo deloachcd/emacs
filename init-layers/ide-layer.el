@@ -51,3 +51,6 @@
   "p m" 'python-mode
   "p s b" 'python-shell-send-buffer
   "p s r" 'python-shell-send-region)
+
+(help-bindings
+  "d" 'lsp-ui-doc-mode)
