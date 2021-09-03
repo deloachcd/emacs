@@ -124,10 +124,11 @@
   "i l" 'org-insert-link
   "i c" 'org-insert-src-block
   ;; org-roam
-  "r f" 'org-roam-node-find
-  "r i" 'org-roam-node-insert
-  "r b" 'org-roam-buffer-toggle
-  "r c" 'org-capture-finalize
+  "r f"   'org-roam-node-find
+  "r i"   'org-roam-node-insert
+  "r b"   'org-roam-buffer-toggle
+  "r c"   'org-capture-finalize
+  "r d t" 'org-roam-dailies-capture-today
   ;; following links
   "l n" 'org-open-at-point
   "l p" 'org-mark-ring-goto
