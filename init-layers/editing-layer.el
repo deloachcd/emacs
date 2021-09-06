@@ -53,7 +53,6 @@
                             (hl-line-mode)
                             (show-paren-mode)
                             (company-mode)
-                            (indent-file-when-save)
                             (evil-surround-mode)))
 
 ;; Hook for text editing major modes, mainly org-mode
