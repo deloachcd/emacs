@@ -6,6 +6,9 @@
 ;; The bulk of our configuration happens in these files
 (add-to-list 'load-path "~/.emacs.d/init-layers")
 
+;; These should be available to init-layers
+(add-to-list 'load-path "~/.emacs.d/autoload")
+
 ;; This allows loading local config layers from a list
 (defun load-config-layers (layers)
   (defun get-layer-path (layer-name)

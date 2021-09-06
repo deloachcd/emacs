@@ -24,6 +24,7 @@
 (setq ccls-executable "/usr/bin/ccls")
 (setq c-basic-offset 4
       c-default-style "stroustrup")
+(require 'cmake-mode)
 
 (defun c-mode-hook-additions ()
   (electric-pair-local-mode)
