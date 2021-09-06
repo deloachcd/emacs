@@ -38,6 +38,8 @@
   :config
   (progn
     (setf org-blank-before-new-entry '((heading . nil) (plain-list-item . nil)))
+    (setq org-ellipsis " ▾")
+    (set-face-underline 'org-ellipsis nil)
     (org-font-setup)))
 
 ;; old value: '("♣" "♠" "♦" "♥")

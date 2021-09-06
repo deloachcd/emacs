@@ -80,6 +80,15 @@
   "e" 'eshell
   "s" 'shell)
 
+;; NOTE: indent-whole-buffer defined in editing layer
+(general-create-definer indentation-bindings
+  :prefix "SPC i"
+  :states '(normal emacs visual)
+  :keymaps 'override)
+(shell-bindings
+  "r" 'indent-region
+  "b" 'indent-whole-buffer)
+
 ;; these are here for the sake of consistency - Alt bindings
 ;; ought to be more commonly used for their convenience
 (general-create-definer window-management-bindings

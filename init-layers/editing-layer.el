@@ -7,6 +7,9 @@
 ;; https://github.com/snackon/Witchmacs
 (provide 'editing-layer)
 
+;; Regular copy/paste keybindings when mark is set or in minibuffer
+(cua-mode t)
+
 ;; Vim-like bindings
 (use-package evil
   :init
@@ -32,32 +35,11 @@
 (setq backward-delete-char-untabify-method 'hungry)
 (setq c-basic-offset tab-width)
 
-;; Source for these functions here (credit Ye-Chin,Lee):
-;; https://www.emacswiki.org/emacs/indent-file.el
 (defun indent-whole-buffer ()
-  "indent whole buffer and untabify it"
+  "indent whole buffer"
   (interactive)
   (delete-trailing-whitespace)
-  (indent-region (point-min) (point-max) nil)
-  (untabify (point-min) (point-max)))
-
-(defun indent-file-when-save ()
-  "indent file when save."
-  (make-local-variable 'after-save-hook)
-  (add-hook 'after-save-hook
-            (lambda ()
-              (if (buffer-file-name)
-                  (indent-whole-buffer))
-              (save-buffer))))
-
-(defun indent-file-when-visit ()
-  "indent file when visit."
-  (make-local-variable 'find-file-hook)
-  (add-hook 'find-file-hook
-            (lambda ()
-              (if (buffer-file-name)
-                  (indent-whole-buffer))
-              (save-buffer))))
+  (indent-region (point-min) (point-max) nil))
 
 ;; Bracket pair-matching
 (setq electric-pair-pairs '((?\{ . ?\})
