@@ -139,7 +139,10 @@
   "t i" 'org-toggle-inline-images
   ;; editing source code
   "e c" 'org-edit-special
-  ;; switch to tasks file
+  ;; org-agenda
+  "a a" 'org-agenda
+  "a l" 'org-agenda-list
   "a t" 'org-agenda-edit-tasks
   "a d" 'org-agenda-edit-dates
+  "a s" 'org-schedule
   )
