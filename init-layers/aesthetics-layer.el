@@ -8,13 +8,20 @@
   (setq dashboard-startup-banner "~/.emacs.d/res/img/zenmacs.png")
   (setq dashboard-center-content t)
   (setq dashboard-set-footer nil)
-  (setq dashboard-items '((recents . 5)
-                          (projects . 5)))
+  (setq dashboard-items '((projects . 5)
+						  (recents . 5)))
   :config
   (dashboard-setup-startup-hook))
 
 (use-package doom-modeline
   :init
-  (setq doom-modeline-icon nil)
   (setq doom-modeline-height 30)
   :config (doom-modeline-mode 1))
+
+(use-package all-the-icons
+  :config
+  (let ((has-fonts (= (shell-command
+					   "test -e ~/.local/share/fonts/all-the-icons.ttf")
+					  0)))
+	(unless has-fonts
+	  (all-the-icons-install-fonts))))
