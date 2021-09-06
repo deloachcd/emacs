@@ -16,6 +16,7 @@
 (use-package doom-modeline
   :init
   (setq doom-modeline-height 30)
+  (setq doom-modeline-modal-icon nil)
   :config (doom-modeline-mode 1))
 
 (use-package all-the-icons
