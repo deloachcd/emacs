@@ -85,7 +85,7 @@
   :prefix "SPC i"
   :states '(normal emacs visual)
   :keymaps 'override)
-(shell-bindings
+(indentation-bindings
   "r" 'indent-region
   "b" 'indent-whole-buffer)
 
