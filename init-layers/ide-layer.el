@@ -16,15 +16,13 @@
                                (setq lsp-ui-doc-alignment 'window))))
   :commands lsp-ui-mode)
 
-;; elisp specific configuration
-(add-hook 'emacs-lisp-mode-hook 'electric-pair-local-mode)
-
 ;; C/C++ specific configuration
 (use-package ccls)
 (setq ccls-executable "/usr/bin/ccls")
 (setq c-basic-offset 4
       c-default-style "stroustrup")
 (require 'cmake-mode)
+(require 'glsl-mode)
 
 (defun c-mode-hook-additions ()
   (electric-pair-local-mode)

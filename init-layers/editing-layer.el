@@ -43,9 +43,7 @@
 
 ;; Bracket pair-matching
 (setq electric-pair-pairs '((?\{ . ?\})
-                            (?\( . ?\))
-                            (?\[ . ?\])
-                            (?\" . ?\")))
+                            (?\[ . ?\])))
 
 ;; Hook for all programming language editing major modes
 (add-hook 'prog-mode-hook (lambda ()
