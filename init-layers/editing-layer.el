@@ -7,9 +7,6 @@
 ;; https://github.com/snackon/Witchmacs
 (provide 'editing-layer)
 
-;; Regular copy/paste keybindings when mark is set or in minibuffer
-(cua-mode t)
-
 ;; Vim-like bindings
 (use-package evil
   :init
