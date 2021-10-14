@@ -39,8 +39,8 @@
       (*normal*             "#DEDEDE")
       (*number*             "#2EBF7E")
       (*operators*          "#69D2E7")
-      (*warning*            "salmon")
-      (*regexp*             "salmon")
+      (*warning*            "#ffa07a")
+      (*regexp*             "#ffa07a")
       (*string*             "#E0E4CC")
       (*variable*           "#ffa07a")
       (*visual-selection*   "#505C63"))
@@ -98,6 +98,8 @@
    `(isearch-fail ((t (:background, *warning*))))
    `(lazy-highlight ((t (:background, *operators* :foreground, *visual-selection*))))
 
+   ;; niche stuff
+   `(sh-heredoc ((t (:foreground, *string*))))
    ))
 
 ;;;###autoload
