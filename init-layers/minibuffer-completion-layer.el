@@ -6,7 +6,8 @@
 ;; system functions
 (use-package counsel
   :config
-  (ivy-mode 1))
+  (ivy-mode 1)
+  )
 
 ;; Provides suggestions for available keybinds as you type
 (use-package which-key

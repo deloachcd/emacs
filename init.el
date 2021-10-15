@@ -4,10 +4,10 @@
 (setq exec-path (cons user-local-bin exec-path))
 
 ;; The bulk of our configuration happens in these files
-(add-to-list 'load-path "~/.emacs.d/init-layers")
+(add-to-list 'load-path (concat user-emacs-directory "/init-layers"))
 
 ;; These should be available to init-layers
-(add-to-list 'load-path "~/.emacs.d/autoload")
+(add-to-list 'load-path (concat user-emacs-directory "/autoload"))
 
 ;; This allows loading local config layers from a list
 (defun load-config-layers (layers)
@@ -25,14 +25,14 @@
 ;; Ensure our package archives are up-to-date and load the
 ;; package manager
 (require 'package)
+(setq package-quickstart t)
 (setq package-archives
       '(("gnu" . "https://elpa.gnu.org/packages/")
         ("melpa" . "https://melpa.org/packages/")
         ("melpa-stable" . "https://stable.melpa.org/packages/")
         ("elpa" . "https://elpa.gnu.org/packages/")))
 (unless package-archive-contents
-  (package-refresh-contents))
-(package-initialize)
+  (package-quickstart-refresh))
 
 ;; Load use-package and make sure each entry is downloaded
 (unless (package-installed-p 'use-package)
@@ -53,9 +53,7 @@
 (load-config-layers init-config-layers)
 
 ;; I lifted some code from DOOM emacs to disable customize, because they're
-;; right on the money about `customize' being "a clumsy interface that
-;; sets variables at a time where it can be easily and unpredictably
-;; overwritten."
+;; right on the money about `customize' being dogshit. 
 ;;
 ;; All configuration should be done from this file or one of its layers.
 (dolist (sym '(customize-option customize-browse customize-group customize-face

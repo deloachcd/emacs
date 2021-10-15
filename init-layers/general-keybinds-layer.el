@@ -58,7 +58,7 @@
   :states '(normal emacs)
   :keymaps 'override)
 (file-bindings
-  "f" 'find-file
+  "f" 'counsel-find-file
   "dR" 'dotfile-reload)
 
 (general-create-definer help-bindings

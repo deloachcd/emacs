@@ -12,8 +12,8 @@
 (set-fringe-mode 10)
 
 ;; Load theme from ~/.emacs.d/themes
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'zenburn t)
+(add-to-list 'custom-theme-load-path (concat user-emacs-directory "/themes"))
+(load-theme 'odersky-muted t)
 
 ;; This function is used to set the fixed and variable pitch fonts, with font
 ;; size being set relative to display resolution. There's no formula for this

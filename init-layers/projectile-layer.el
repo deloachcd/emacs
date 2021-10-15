@@ -3,6 +3,7 @@
 (provide 'projectile-layer)
 
 (use-package projectile
+  :defer
   :init (setq projectile-project-search-path '("~"
                                                "~/Projects"
                                                "~/Sync/Documents/org")
