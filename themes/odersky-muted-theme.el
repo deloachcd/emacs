@@ -100,6 +100,11 @@
 
    ;; niche stuff
    `(sh-heredoc ((t (:foreground, *string*))))
+
+   ;; modeline theming - look in doom-modeline-core.el to figure these out
+   `(doom-modeline-evil-normal-state ((t (:foreground, *constant* :weight bold))))
+   `(doom-modeline-evil-visual-state ((t (:foreground, *variable* :weight bold))))
+   `(doom-modeline-info ((t (:foreground, *constant* :weight bold))))
    ))
 
 ;;;###autoload
