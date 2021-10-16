@@ -23,14 +23,15 @@
 (deftheme odersky-muted "A dark color theme for Emacs")
 
 (let ((*background*         "#3c4246")
-      (*vborder*            "#FF7E00")
+      (*vborder*            "#848484")
       (*gutter*             "#3E3E3E")
       (*comments*           "#999999")
       (*constant*           "#affbaf")
       (*current-line*       "#434c5e")
       (*cursor-underscore*  "#FFFAAA")
       (*keywords*           "#A7DBD8")
-      (*line-number*        "#1E2326")
+      (*line-number-bg*     "#4e4e4e")
+      (*line-number-fg*     "#797979")
       (*method-declaration* "#FFD2A7")
       (*mode-line-bg*       "#505C63")
       (*mode-line-fg*       "#E0E4CC")
@@ -81,7 +82,8 @@
 
    ;; GUI
    `(fringe ((t (:background, *gutter*))))
-   `(linum ((t (:background, *line-number*))))
+   ;;`(linum ((t (:background, *line-number-bg*))))
+   `(line-number ((t (:background, *line-number-bg* :foreground, *line-number-fg*))))
    `(minibuffer-prompt ((t (:foreground, *variable*))))
    `(mode-line ((t (:background, *mode-line-bg* :foreground, *mode-line-fg*))))
    `(mode-line-inactive ((t (:background, *mode-inactive-bg* :foreground, *mode-inactive-fg*))))
@@ -91,7 +93,7 @@
 
    ;; show-paren
    `(show-paren-mismatch ((t (:background, *warning* :foreground, *normal* :weight bold))))
-   `(show-paren-match ((t (:background, *keywords* :foreground, *normal* :weight bold))))
+   `(show-paren-match ((t (:background, *keywords* :foreground, *mode-inactive-bg* :weight bold))))
 
    ;; search
    `(isearch ((t (:background, *regexp* :foreground, *visual-selection*))))
