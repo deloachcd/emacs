@@ -102,6 +102,7 @@
 
    ;; niche stuff
    `(sh-heredoc ((t (:foreground, *string*))))
+   `(magit-section-heading ((t (:foreground, *string* :weight bold))))
 
    ;; modeline theming - look in doom-modeline-core.el to figure these out
    `(doom-modeline-evil-normal-state ((t (:foreground, *constant* :weight bold))))
