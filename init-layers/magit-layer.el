@@ -2,7 +2,8 @@
 (require 'general-keybinds-layer)
 (provide 'magit-layer)
 
-(use-package magit)
+(use-package magit
+  :defer)
 
 (general-create-definer magit-bindings
   :prefix "SPC g"

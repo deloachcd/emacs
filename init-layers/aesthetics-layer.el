@@ -5,7 +5,7 @@
 
 (use-package dashboard
   :init
-  (setq dashboard-startup-banner "~/.emacs.d/res/img/zenmacs.png")
+  (setq dashboard-startup-banner (concat user-emacs-directory "/res/img/toothpaste-desat.png"))
   (setq dashboard-center-content t)
   (setq dashboard-set-footer nil)
   (setq dashboard-items '((projects . 5)
@@ -20,6 +20,7 @@
   :config (doom-modeline-mode 1))
 
 (use-package all-the-icons
+  :defer
   :config
   (let ((has-fonts (= (shell-command
 					   "test -e ~/.local/share/fonts/all-the-icons.ttf")

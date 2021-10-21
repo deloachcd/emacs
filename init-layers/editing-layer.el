@@ -20,7 +20,8 @@
 (use-package evil-collection
   :config (evil-collection-init))
 
-(use-package evil-surround)
+(use-package evil-surround
+  :defer)
 
 ;; Scroll one line at a time, like it should be
 (setq scroll-conservatively 100)
@@ -74,4 +75,5 @@
 
 ;; It's nice to have this available for when we want to see
 ;; which functions we're using
-(use-package command-log-mode)
+(use-package command-log-mode
+  :defer t)

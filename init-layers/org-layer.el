@@ -7,6 +7,7 @@
 
 ;; Automagically mix variable and monospace fonts
 (use-package mixed-pitch
+  :defer
   :init (setq mixed-pitch-set-height t))
 
 (defun org-mode-setup ()
@@ -34,6 +35,7 @@
         (set-face-attribute face nil :foreground "#7c7c7c"))))
 
 (use-package org
+  :defer
   :hook (org-mode . org-mode-setup)
   :config
   (progn
@@ -44,7 +46,7 @@
 
 ;; old value: '("♣" "♠" "♦" "♥")
 (use-package org-bullets
-  :after org
+  :defer
   :hook (org-mode . org-bullets-mode)
   :config (setq org-bullets-bullet-list '("✮" "✸" "✱" "❖")))
 
@@ -62,7 +64,8 @@
   (setq org-M-RET-may-split-line nil))
 
 (use-package evil-org
-  :after org
+  :defer
+  ;;:after org
   :hook (org-mode . evil-org-mode)
   :config
   (progn
