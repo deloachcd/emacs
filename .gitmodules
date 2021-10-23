@@ -1,0 +1,3 @@
+[submodule "doom/themes"]
+	path = doom/themes
+	url = https://github.com/deloachcd/emacs-themes
