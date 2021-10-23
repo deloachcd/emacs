@@ -4,9 +4,7 @@
 ;; sync' after modifying this file!
 
 ;; Add my own stuff to load-path
-(add-load-path! (concat user-emacs-directory "/themes"))
-;;(add-to-list 'load-path (concat user-emacs-directory "/init-layers"))
-;;(add-to-list 'load-path (concat user-emacs-directory "/autoload"))
+;;(add-load-path! (concat doom-private-dir "/autoload"))
 
 ;; Disable GUI toolbars
 (scroll-bar-mode -1)
@@ -78,7 +76,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'odersky-muted)
+(setq doom-theme 'dehydrated)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
