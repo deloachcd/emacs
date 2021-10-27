@@ -49,10 +49,10 @@
              (string-equal resolution "3840x2160") 20)
 
             ;; 1080p
-            ((string-equal resolution "1920x1080") 20)
+            ((string-equal resolution "1920x1080") 16)
 
             ;; Default case - same as 1080p for now
-            (t  20)))))
+            (t  16)))))
 
 (setq doom-font (font-spec :family "Fira Code" 
                            :size (get-font-size-from-resolution))
