@@ -102,3 +102,25 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+;; org-mode setup
+(after! org
+  ;; set up fonts in org-mode
+  (progn
+    ;; intelligently mix monospace and variable-pitch fonts in org-mode
+    (use-package! mixed-pitch
+      :hook (org-mode . mixed-pitch-mode))
+    ;; Give headings larger, bold font
+    (dolist (face '((org-document-title . 1.0)
+                    (org-level-1 . 1.5)
+                    (org-level-2 . 1.25)
+                    (org-level-3 . 1.1)
+                    (org-level-4 . 1.0)
+                    (org-level-5 . 1.0)
+                    (org-level-6 . 1.0)
+                    (org-level-7 . 1.0)
+                    (org-level-8 . 1.0)))
+      (set-face-attribute (car face) nil
+                          :inherit 'doom-variable-pitch-font :weight 'bold :height (cdr face)))
+    ;; don't show the org-roam backlinks buffer whenever we load any roam file
+    (setq +org-roam-open-buffer-on-find-file nil)))
