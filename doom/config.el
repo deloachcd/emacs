@@ -54,10 +54,10 @@
             ;; Default case - same as 1080p for now
             (t  16)))))
 
-(setq doom-font (font-spec :family "Fira Code" 
+(setq doom-font (font-spec :family "Fira Code"
                            :size (get-font-size-from-resolution))
       doom-variable-pitch-font (font-spec :family "Noto Sans"
-                                          :size (+ (get-font-size-from-resolution) 2)))
+                                          :size (get-font-size-from-resolution)))
 
 (defun set-frame-defaults (frame-width frame-height)
   (if (display-graphic-p)
@@ -104,6 +104,8 @@
 ;; they are implemented.
 
 ;; org-mode setup
+(setq org-root "~/Sync/Documents/org")
+
 (after! org
   ;; set up fonts in org-mode
   (progn
@@ -124,3 +126,17 @@
                           :inherit 'doom-variable-pitch-font :weight 'bold :height (cdr face)))
     ;; don't show the org-roam backlinks buffer whenever we load any roam file
     (setq +org-roam-open-buffer-on-find-file nil)))
+
+(defun org-agenda-edit-tasks ()
+  (interactive)
+  (find-file (concat org-root "/agenda/tasks.org")))
+
+(defun org-agenda-edit-dates ()
+  (interactive)
+  (find-file (concat org-root "/agenda/dates.org")))
+
+(map! :leader
+      (:prefix-map ("o" . "open")
+       (:prefix ("a" . "org agenda")
+        :desc "Edit org agenda tasks" "T" 'org-agenda-edit-tasks
+        :desc "Edit org agenda dates" "D" 'org-agenda-edit-dates)))
