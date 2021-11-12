@@ -127,6 +127,11 @@
     ;; don't show the org-roam backlinks buffer whenever we load any roam file
     (setq +org-roam-open-buffer-on-find-file nil)))
 
+(after! company
+    ;; disable company in org buffer
+    (setq company-global-modes
+          (append '(not org-mode) (cdr company-global-modes))))
+
 (defun org-agenda-edit-tasks ()
   (interactive)
   (find-file (concat org-root "/agenda/tasks.org")))
