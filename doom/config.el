@@ -13,7 +13,7 @@
 (tooltip-mode -1)
 
 ;; Slight padding for content in frame
-(set-fringe-mode 10)
+(set-fringe-mode 5)
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
@@ -68,8 +68,8 @@
 
 (setq default-frame-alist
       (append (list
-	       '(height         . 42)
-	       '(width          . 108)
+               '(height         . 42)
+               '(width          . 108)
                '(left-fringe    . 0)
                '(right-fringe   . 0))))
 
@@ -127,11 +127,17 @@
     ;; don't show the org-roam backlinks buffer whenever we load any roam file
     (setq +org-roam-open-buffer-on-find-file nil)))
 
+;; changing DOOM functionality I don't like
+
+;; disable company in org buffer
 (after! company
-    ;; disable company in org buffer
     (setq company-global-modes
           (append '(not org-mode) (cdr company-global-modes))))
 
+;; don't skip over a ton of buffers when switching
+(setq doom-unreal-buffer-functions '(minibufferp))
+
+;; custom functions
 (defun org-agenda-edit-tasks ()
   (interactive)
   (find-file (concat org-root "/agenda/tasks.org")))
@@ -145,3 +151,13 @@
        (:prefix ("a" . "org agenda")
         :desc "Edit org agenda tasks" "T" 'org-agenda-edit-tasks
         :desc "Edit org agenda dates" "D" 'org-agenda-edit-dates)))
+
+;; doom-modeline
+(setq doom-modeline-major-mode-icon t)
+(setq doom-modeline-workspace-name t)
+
+;; custom extensions
+(add-load-path! "extensions")
+
+(require 'glsl-viewer)
+(setq glsl-viewer-path "~/.local/bin/glslViewer")
