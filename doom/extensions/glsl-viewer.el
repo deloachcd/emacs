@@ -17,8 +17,8 @@
 
           ;; main logic
         (t
-         (let* ((current-directory (file-name-directory buffer-file-name))
-                (glsl-viewer-spec-file (concat current-directory ".viewerspec"))
+         (let* ((buffer-directory (file-name-directory buffer-file-name))
+                (glsl-viewer-spec-file (concat buffer-directory ".viewerspec"))
                 (glsl-viewer-spec (if (file-exists-p glsl-viewer-spec-file)
                                       (shell-command-to-string
                                        (concat "cat " glsl-viewer-spec-file " | xargs"))))
@@ -26,4 +26,5 @@
                                             (or glsl-viewer-spec buffer-file-name) "\n")))
            (progn
              (shell "*glslViewer*")
+             (comint-send-string "*glslViewer*" (concat "cd " buffer-directory "\n"))
              (comint-send-string "*glslViewer*" shell-init-command))))))
