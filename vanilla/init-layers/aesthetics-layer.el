@@ -5,11 +5,12 @@
 
 (use-package dashboard
   :init
-  (setq dashboard-startup-banner (concat user-emacs-directory "/res/img/toothpaste-desat.png"))
-  (setq dashboard-center-content t)
-  (setq dashboard-set-footer nil)
-  (setq dashboard-items '((projects . 5)
-						  (recents . 5)))
+  ;;;(setq dashboard-startup-banner (concat user-emacs-directory "/res/img/toothpaste-desat.png"))
+  ;;(setq dashboard-center-content t)
+  ;;(setq dashboard-set-footer nil)
+  (setq dashboard-startup-banner 1)
+  (setq dashboard-items '((recents . 5)
+                          (projects. 5)))
   :config
   (dashboard-setup-startup-hook))
 
@@ -20,10 +21,12 @@
   :config (doom-modeline-mode 1))
 
 (use-package all-the-icons
-  :defer
   :config
   (let ((has-fonts (= (shell-command
 					   "test -e ~/.local/share/fonts/all-the-icons.ttf")
 					  0)))
 	(unless has-fonts
 	  (all-the-icons-install-fonts))))
+
+(use-package rainbow-delimiters
+  :hook (prog-mode-hook . rainbow-delimiters-mode))

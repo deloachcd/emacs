@@ -9,11 +9,11 @@
 (tooltip-mode -1)
 
 ;; Slight padding for content in frame
-(set-fringe-mode 10)
+(set-fringe-mode 5)
 
 ;; Load theme from ~/.emacs.d/themes
 (add-to-list 'custom-theme-load-path (concat user-emacs-directory "/themes"))
-(load-theme 'odersky-muted t)
+(load-theme 'dehydrated t)
 
 ;; This function is used to set the fixed and variable pitch fonts, with font
 ;; size being set relative to display resolution. There's no formula for this
@@ -44,11 +44,11 @@
 
       (cond (;; 4k
              (string-equal resolution "3840x2160")
-             (set-fonts-from-heights 125 135))
+             (set-fonts-from-heights 115 125))
 
             ;; 1080p
             ((string-equal resolution "1920x1080")
-             (set-fonts-from-heights 120 130))
+             (set-fonts-from-heights 110 120))
 
             ;; Default case - same as 1080p for now
             (t (set-fonts-from-heights 120 130))))))
@@ -64,4 +64,4 @@
 
 ;; We call our functions to apply their changes here
 (set-fonts-from-display-resolution "Fira Code" "Noto Sans")
-(set-frame-defaults 108 42)
+(set-frame-defaults 80 35)

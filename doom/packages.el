@@ -58,3 +58,4 @@
 			 :files ("gitignore-mode.el")))
 
 (package! mixed-pitch)
+(package! tao-theme)
