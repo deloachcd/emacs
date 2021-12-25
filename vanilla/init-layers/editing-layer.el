@@ -40,7 +40,8 @@
   (indent-region (point-min) (point-max) nil))
 
 ;; Bracket pair-matching
-(setq electric-pair-pairs '((?\{ . ?\})
+(setq electric-pair-pairs '((?\( . ?\))
+                            (?\{ . ?\})
                             (?\[ . ?\])))
 
 ;; Hook for all programming language editing major modes
@@ -49,7 +50,8 @@
                             (hl-line-mode)
                             (show-paren-mode)
                             (company-mode)
-                            (evil-surround-mode)))
+                            (evil-surround-mode)
+                            (electric-pair-mode)))
 
 ;; Hook for text editing major modes, mainly org-mode
 (add-hook 'text-mode-hook (lambda ()

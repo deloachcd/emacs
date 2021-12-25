@@ -121,6 +121,26 @@
   :states '(normal emacs)
   :keymaps 'override)
 
+;; org babel
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (python . t)))
+(setq org-confirm-babel-evaluate nil)
+
+;; org babel scratch buffer
+(setq inhibit-startup-message t)
+(setq initial-major-mode 'org-mode)
+(setq initial-scratch-message
+      (with-temp-buffer
+        (let* ((rnum (number-to-string (+ (random 3) 1)))
+               (banner-file (concat "/res/banners/" rnum ".txt")))
+            (insert-file-contents (concat user-emacs-directory "/res/org/scratch.org"))
+            (insert-file-contents (concat user-emacs-directory banner-file))
+            (insert "#+begin_src")
+            (insert "\n")
+            (buffer-string))))
+
 (org-bindings
   ;; insertion
   ;; "i i" 'org-insert-item        DEPRECATED: use M-RET instead
@@ -137,6 +157,8 @@
   ;; following links
   "l n" 'org-open-at-point
   "l p" 'org-mark-ring-goto
+  ;; org-babel
+  "b e" 'org-babel-execute-src-block
   ;; checking boxes
   "t b" 'org-toggle-checkbox
   "t i" 'org-toggle-inline-images

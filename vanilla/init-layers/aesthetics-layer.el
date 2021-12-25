@@ -3,18 +3,8 @@
 ;; after package refresh.
 (provide 'aesthetics-layer)
 
+;; start directly to scratch buffer
 (setq inhibit-startup-message t)
-(setq initial-scratch-message "\
-;;
-;;   ╻╻ ╻ ╻   ╻ ╻┏━╸╻  ┏━╸┏━┓┏┳┓┏━╸   ╺┳╸┏━┓   ┏━╸┏┳┓┏━┓┏━╸┏━┓    ╻╻ ╻ ╻
-;;  ┏┛╺╋╸┏┛   ┃╻┃┣╸ ┃  ┃  ┃ ┃┃┃┃┣╸     ┃ ┃ ┃   ┣╸ ┃┃┃┣━┫┃  ┗━┓   ┏┛╺╋╸┏┛
-;;  ╹ ╹ ╹╹    ┗┻┛┗━╸┗━╸┗━╸┗━┛╹ ╹┗━╸    ╹ ┗━┛   ┗━╸╹ ╹╹ ╹┗━╸┗━┛   ╹ ╹ ╹╹
-;;
-;; This buffer is for text that is not saved, and for Lisp evaluation.
-;; To create a file, visit it with C-x C-f and enter text in its buffer.
-
-")
-;;(setq initial-major-mode 'python-mode)
 
 (use-package doom-modeline
   :init

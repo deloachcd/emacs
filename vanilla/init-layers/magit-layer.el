@@ -11,5 +11,5 @@
   :keymaps 'override)
 
 (magit-bindings
-  "s" 'magit-status
+  "g" 'magit-status
   "c" 'with-editor-finish)

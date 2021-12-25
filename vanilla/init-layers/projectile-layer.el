@@ -34,5 +34,5 @@
   :keymaps 'override)
 (projectile-bindings
   "f" 'projectile-find-file
-  "s" 'projectile-switch-project
+  "p" 'projectile-switch-project
   "r" 'run-project-from-entrypoint)

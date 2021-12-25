@@ -24,7 +24,7 @@
   :keymaps 'override)
 
 (root-bindings
-  "SPC" 'execute-extended-command)
+  ":" 'execute-extended-command)
 
 ;; TODO: SPC e as general eval layer, not just elisp
 (general-create-definer elisp-bindings
@@ -43,7 +43,7 @@
   :states '(normal emacs)
   :keymaps 'override)
 (buffer-management-bindings
-  "s" 'ivy-switch-buffer
+  "b" 'ivy-switch-buffer
   "n" 'next-buffer
   "p" 'previous-buffer
   "k" 'kill-buffer)

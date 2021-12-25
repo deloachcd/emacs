@@ -45,6 +45,7 @@
   (electric-pair-local-mode))
 
 (add-hook 'python-mode-hook 'python-mode-hook-additions)
+(setq org-babel-python-command "/usr/bin/env python3")
 
 ;; LSP keybinds
 (general-create-definer language-bindings
