@@ -3,16 +3,18 @@
 ;; after package refresh.
 (provide 'aesthetics-layer)
 
-(use-package dashboard
-  :init
-  ;;;(setq dashboard-startup-banner (concat user-emacs-directory "/res/img/toothpaste-desat.png"))
-  ;;(setq dashboard-center-content t)
-  ;;(setq dashboard-set-footer nil)
-  (setq dashboard-startup-banner 1)
-  (setq dashboard-items '((recents . 5)
-                          (projects. 5)))
-  :config
-  (dashboard-setup-startup-hook))
+(setq inhibit-startup-message t)
+(setq initial-scratch-message "\
+;;
+;;   ╻╻ ╻ ╻   ╻ ╻┏━╸╻  ┏━╸┏━┓┏┳┓┏━╸   ╺┳╸┏━┓   ┏━╸┏┳┓┏━┓┏━╸┏━┓    ╻╻ ╻ ╻
+;;  ┏┛╺╋╸┏┛   ┃╻┃┣╸ ┃  ┃  ┃ ┃┃┃┃┣╸     ┃ ┃ ┃   ┣╸ ┃┃┃┣━┫┃  ┗━┓   ┏┛╺╋╸┏┛
+;;  ╹ ╹ ╹╹    ┗┻┛┗━╸┗━╸┗━╸┗━┛╹ ╹┗━╸    ╹ ┗━┛   ┗━╸╹ ╹╹ ╹┗━╸┗━┛   ╹ ╹ ╹╹
+;;
+;; This buffer is for text that is not saved, and for Lisp evaluation.
+;; To create a file, visit it with C-x C-f and enter text in its buffer.
+
+")
+;;(setq initial-major-mode 'python-mode)
 
 (use-package doom-modeline
   :init
