@@ -16,10 +16,10 @@
   (visual-line-mode 1))
 
 (defun org-font-setup ()
-  (dolist (face '((org-document-title . 1.75)
-                  (org-level-1 . 1.5)
-                  (org-level-2 . 1.25)
-                  (org-level-3 . 1.1)
+  (dolist (face '((org-document-title . 1.5)
+                  (org-level-1 . 1.25)
+                  (org-level-2 . 1.1)
+                  (org-level-3 . 1.0)
                   (org-level-4 . 1.0)
                   (org-level-5 . 1.0)
                   (org-level-6 . 1.0)
@@ -48,7 +48,7 @@
 (use-package org-bullets
   :defer
   :hook (org-mode . org-bullets-mode)
-  :config (setq org-bullets-bullet-list '("✮" "✸" "✱" "❖")))
+  :config (setq org-bullets-bullet-list '("✸" "✱" "❖" "♦")))
 
 (use-package org-roam
   :init

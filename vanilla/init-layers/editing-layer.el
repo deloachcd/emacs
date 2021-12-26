@@ -51,7 +51,8 @@
                             (show-paren-mode)
                             (company-mode)
                             (evil-surround-mode)
-                            (electric-pair-mode)))
+                            (electric-pair-mode)
+							(rainbow-delimiters-mode)))
 
 ;; Hook for text editing major modes, mainly org-mode
 (add-hook 'text-mode-hook (lambda ()
