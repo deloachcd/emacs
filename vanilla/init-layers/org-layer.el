@@ -137,7 +137,9 @@
                (banner-file (concat "/res/banners/" rnum ".txt")))
             (insert-file-contents (concat user-emacs-directory "/res/org/scratch.org"))
             (insert-file-contents (concat user-emacs-directory banner-file))
-            (insert "#+begin_src")
+            (insert "#+begin_src python")
+            (insert "\n")
+            (insert "\"\"\"")
             (insert "\n")
             (buffer-string))))
 
