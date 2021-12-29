@@ -96,8 +96,8 @@
   :states '(normal emacs)
   :keymaps 'override)
 (window-management-bindings
-  "/" 'split-window-right
-  "-" 'split-window-below
+  "v" 'split-window-right
+  "s" 'split-window-below
   "h" 'windmove-left
   "j" 'windmove-down
   "k" 'windmove-up
