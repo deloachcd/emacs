@@ -7,10 +7,11 @@
 #+begin_src python :results functional
 import math
 
-return 
 #+end_src
 
 * Emacs Lisp
-#+begin_src emacs-lisp :results scripting
+#+begin_src emacs-lisp :results functional
 
 #+end_src
+
+* Notes
