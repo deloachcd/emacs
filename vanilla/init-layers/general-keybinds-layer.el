@@ -18,13 +18,18 @@
 ;; perfect for spacemacs-style bindings with evil mode
 (use-package general)
 
+;; Provides suggestions for available keybinds as you type,
+;; integrates with general.el
+(use-package which-key
+  :config (which-key-mode))
+
 (general-create-definer root-bindings
   :prefix "SPC"
   :states '(normal emacs visual)
   :keymaps 'override)
 
 (root-bindings
-  ":" 'execute-extended-command)
+  "SPC" 'execute-extended-command)
 
 ;; TODO: SPC e as general eval layer, not just elisp
 (general-create-definer elisp-bindings
@@ -33,6 +38,7 @@
   :keymaps 'override)
 
 (elisp-bindings
+  "" '(nil :which-key "eval")
   "b" 'eval-buffer
   "s" 'eval-last-sexp
   "r" 'eval-region
@@ -43,10 +49,12 @@
   :states '(normal emacs)
   :keymaps 'override)
 (buffer-management-bindings
-  "b" 'ivy-switch-buffer
+  "" '(nil :which-key "buffers")
+  "b" 'consult-buffer
   "n" 'next-buffer
   "p" 'previous-buffer
-  "k" 'kill-buffer)
+  "k" 'kill-current-buffer
+  "K" 'kill-buffer)
 
 (defun dotfile-reload ()
   "Reloads emacs configuration from init.el"
@@ -58,27 +66,23 @@
   :states '(normal emacs)
   :keymaps 'override)
 (file-bindings
-  "f" 'counsel-find-file
+  "" '(nil :which-key "files")
+  "f" 'find-file
   "dR" 'dotfile-reload)
 
 (general-create-definer help-bindings
   :prefix "SPC h"
   :states '(normal emacs)
   :keymaps 'override)
+
+;; NOTE: some of these get overriden if 'helpful' layer gets loaded after
 (help-bindings
+  "" '(nil :which-key "help")
+  "c" 'describe-char
   "k" 'describe-key
   "f" 'describe-function
   "v" 'describe-variable
   "a" 'apropos)
-
-(general-create-definer shell-bindings
-  :prefix "SPC s"
-  :states '(normal emacs visual)
-  :keymaps 'override)
-(shell-bindings
-  "m" 'sh-mode
-  "e" 'eshell
-  "s" 'shell)
 
 ;; NOTE: indent-whole-buffer defined in editing layer
 (general-create-definer indentation-bindings
@@ -86,6 +90,7 @@
   :states '(normal emacs visual)
   :keymaps 'override)
 (indentation-bindings
+  "" '(nil :which-key "indent")
   "r" 'indent-region
   "b" 'indent-whole-buffer)
 
@@ -96,9 +101,20 @@
   :states '(normal emacs)
   :keymaps 'override)
 (window-management-bindings
+  "" '(nil :which-key "window")
   "v" 'split-window-right
   "s" 'split-window-below
   "h" 'windmove-left
   "j" 'windmove-down
   "k" 'windmove-up
   "l" 'windmove-right)
+
+;; this definer gets used later, to create keybinds within
+;; language specific configuration layers
+(general-create-definer language-bindings
+  :prefix "SPC l"
+  :states '(normal emacs)
+  :keymaps 'override)
+
+(language-bindings
+  "" '(nil :which-key "lang"))

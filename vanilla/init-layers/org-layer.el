@@ -1,6 +1,5 @@
 ;; Configuration related to org-mode, org-roam, etc.
 (require 'general-keybinds-layer)
-(provide 'org-layer)
 
 ;; Where we'll store all our org documents
 (setq org-root "~/Sync/Documents/org")
@@ -13,7 +12,8 @@
 (defun org-mode-setup ()
   (setq org-hide-emphasis-markers t)
   (mixed-pitch-mode 1)
-  (visual-line-mode 1))
+  (visual-line-mode 1)
+  (org-indent-mode 1))
 
 (defun org-font-setup ()
   (dolist (face '((org-document-title . 1.5)
@@ -144,29 +144,38 @@
             (buffer-string))))
 
 (org-bindings
+  "" '(nil :which-key "org")
   ;; insertion
   ;; "i i" 'org-insert-item        DEPRECATED: use M-RET instead
   ;; "i h" 'org-insert-heading     DEPRECATED: use O instead
   ;; "i s" 'org-insert-subheading  DEPRECATED: use M-O instead
+  "i" '(nil :which-key "insert")
   "i l" 'org-insert-link
   "i c" 'org-insert-src-block
   ;; org-roam
+  "r" '(nil :which-key "roam")
   "r f"   'org-roam-node-find
   "r i"   'org-roam-node-insert
   "r b"   'org-roam-buffer-toggle
   "r c"   'org-capture-finalize
   "r d t" 'org-roam-dailies-capture-today
   ;; following links
+  "l" '(nil :which-key "link")
   "l n" 'org-open-at-point
   "l p" 'org-mark-ring-goto
   ;; org-babel
+  "b" '(nil :which-key "babel")
   "b e" 'org-babel-execute-src-block
   ;; checking boxes
+  "t" '(nil :which-key "toggle")
   "t b" 'org-toggle-checkbox
   "t i" 'org-toggle-inline-images
+  "t t" 'org-todo
   ;; editing source code
+  "e" '(nil :which-key "edit")
   "e c" 'org-edit-special
   ;; org-agenda
+  "a" '(nil :which-key "agenda")
   "a a" 'org-agenda
   "a l" 'org-agenda-list
   "a t" 'org-agenda-edit-tasks

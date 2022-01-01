@@ -1,13 +1,11 @@
 ;; Configuration related to project management with projectile.
 (require 'general-keybinds-layer)
-(provide 'projectile-layer)
 
 (use-package projectile
   :defer
   :init (setq projectile-project-search-path '("~"
                                                "~/Projects"
-                                               "~/Sync/Documents/org")
-              projectile-completion-system 'ivy)
+                                               "~/Sync/Documents/org"))
   :config (projectile-mode 1))
 
 ;; Use projectile for packages to find project root,
@@ -33,6 +31,7 @@
   :states '(normal emacs)
   :keymaps 'override)
 (projectile-bindings
+  "" '(nil :which-key "project")
   "f" 'projectile-find-file
   "p" 'projectile-switch-project
   "r" 'run-project-from-entrypoint)

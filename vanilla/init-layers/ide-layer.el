@@ -7,8 +7,6 @@
 (provide 'ide-layer)
 
 ;; Primary autocompletion engine
-(use-package company
-  :defer)
 (use-package lsp-mode
   :defer
   :commands lsp)
@@ -54,7 +52,9 @@
   :keymaps 'override)
 
 (language-bindings
+  "" '(nil :which-key "lang")
   ;; Python bindings
+  "p" '(nil :which-key "python")
   "p r" 'run-python
   "p m" 'python-mode
   "p s b" 'python-shell-send-buffer

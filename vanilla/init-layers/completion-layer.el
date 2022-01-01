@@ -1,11 +1,26 @@
-(provide 'completion-layer)
+;; Configuration related to ivy/swiper/counsel, and which-key.
 
-;; Ivy completion engine for minibuffer-driven user interaction,
-;; counsel-mode pulls in ivy-specific replacements for emacs
-;; system functions
-(use-package ivy 
-  :config (ivy-mode 1))
+;; vertico provides primary autocompletion
+(use-package vertico 
+  :config
+  (vertico-mode 1))
 
-;; Provides suggestions for available keybinds as you type
-(use-package which-key
-  :config (which-key-mode))
+;; additional commands, like consult-buffer
+(use-package consult)
+
+;; orderless completion in vertico
+(use-package orderless
+  :init
+  (setq completion-styles '(orderless)))
+
+;; Extension to make find-file act like it's supposed to
+(use-package vertico-directory
+  :after vertico
+  :ensure nil
+  :bind (:map vertico-map
+              ("RET" . vertico-directory-enter)
+              ("DEL" . vertico-directory-delete-char)))
+
+(use-package company
+  :defer
+  :hook (prog-mode . company-mode))

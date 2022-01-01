@@ -3,11 +3,16 @@
 (setq user-local-bin (concat (getenv "HOME") "/.local/bin"))
 (setq exec-path (cons user-local-bin exec-path))
 
+;; custom variables for some useful paths
+(setq user-layers-path (concat user-emacs-directory "/init-layers"))
+(setq autoload-path (concat user-emacs-directory "/autoload"))
+
 ;; The bulk of our configuration happens in these files
-(add-to-list 'load-path (concat user-emacs-directory "/init-layers"))
+(add-to-list 'load-path user-layers-path)
+(add-to-list 'load-path (concat user-layers-path "/languages"))
 
 ;; These should be available to init-layers
-(add-to-list 'load-path (concat user-emacs-directory "/autoload"))
+(add-to-list 'load-path autoload-path)
 
 ;; This allows loading local config layers from a list
 (defun load-config-layers (layers)
@@ -16,23 +21,14 @@
   (dolist (layer layers)
     (load (get-layer-path layer))))
 
-;; This layer is loaded before package refresh, because
-;; it can take a bit and this looks much nicer than
-;; waiting for theming to load
-(setq early-init-config-layers '(early-init-aesthetics))
-(load-config-layers early-init-config-layers)
-
 ;; Ensure our package archives are up-to-date and load the
 ;; package manager
-(require 'package)
-(setq package-quickstart t)
 (setq package-archives
       '(("gnu" . "https://elpa.gnu.org/packages/")
         ("melpa" . "https://melpa.org/packages/")
         ("melpa-stable" . "https://stable.melpa.org/packages/")
         ("elpa" . "https://elpa.gnu.org/packages/")))
-(unless package-archive-contents
-  (package-quickstart-refresh))
+(require 'package)
 
 ;; Load use-package and make sure each entry is downloaded
 (unless (package-installed-p 'use-package)
@@ -41,14 +37,26 @@
 (setq use-package-always-ensure t)
 
 ;; The bulk of configuration happens in these layers
-(setq init-config-layers '(aesthetics
-                           editing
-                           minibuffer-completion
+(setq init-config-layers '(;; theming and font scaling happens first
+                           aesthetics
+                           ;; next, which-key and general.el are made available
                            general-keybinds
-                           ide
+                           ;; general editor configuration happens here
+                           editing
+                           ;; these layers target specific (sets of) extension(s)
+                           completion
+                           evil
+                           helpful
                            projectile
+                           flycheck
                            org
-                           magit))
+                           git
+                           shell
+                           ;; language-specific layers
+                           emacs-lisp
+                           python
+                           c
+                           ))
 
 (load-config-layers init-config-layers)
 
