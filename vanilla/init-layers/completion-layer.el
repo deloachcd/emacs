@@ -21,6 +21,10 @@
               ("RET" . vertico-directory-enter)
               ("DEL" . vertico-directory-delete-char)))
 
+(use-package marginalia
+  :init
+  (marginalia-mode))
+
 (use-package company
   :defer
   :hook (prog-mode . company-mode))
