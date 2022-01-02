@@ -191,8 +191,21 @@
    `(diredp-symlink ((t (:foreground, *weak-cyan*))))
    `(diredp-write-priv ((t (:foreground, *green*))))
 
+   ;; highlight-defined
+   `(highlight-defined-builtin-function-name-face ((t (:foreground, *green*))))
+
    ;; org-mode
    `(org-headline-done ((t (:foreground, *beige*))))
+
+   ;; ansi-term / vterm colors
+   `(term-color-black ((t (:foreground, "#6f8e7e"))))
+   `(term-color-red ((t (:foreground, "#daa2a2"))))
+   `(term-color-green ((t (:foreground, "#72d5a3"))))
+   `(term-color-yellow ((t (:foreground, "#f0dfaf"))))
+   `(term-color-blue ((t (:foreground, "#94bff3"))))
+   `(term-color-magenta ((t (:foreground, "#ec93d3"))))
+   `(term-color-cyan ((t (:foreground, "#93e0e3"))))
+   `(term-color-white ((t (:foreground, "#f6f6f6"))))
    ))
 
 ;;;###autoload
