@@ -98,12 +98,18 @@
 ;; ensure line number width doesn't change as we scroll down
 (setq display-line-numbers-width-start t)
 
-;; TODO change this later
-(use-package doom-modeline
+(use-package mood-line
   :init
-  (setq doom-modeline-height 30)
-  (setq doom-modeline-modal-icon nil)
-  :config (doom-modeline-mode 1))
+  (setq mood-line-show-encoding-information t)
+  (setq mood-line-show-eol-style t)
+  (defun border-mode-line-face (mode-line-face)
+    (let* ((mode-line-color (face-attribute mode-line-face :background))
+           (mode-line-box (list :line-width 3 :color mode-line-color)))
+      (set-face-attribute mode-line-face nil :box mode-line-box)))
+  (border-mode-line-face 'mode-line)
+  (border-mode-line-face 'mode-line-inactive)
+  :config
+  (mood-line-mode))
 
 (use-package all-the-icons
   :config
