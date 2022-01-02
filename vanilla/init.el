@@ -45,7 +45,7 @@
                            editing
                            ;; these layers target specific (sets of) extension(s)
                            completion
-                           evil
+                           evil-god
                            helpful
                            projectile
                            flycheck
