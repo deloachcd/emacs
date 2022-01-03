@@ -3,6 +3,10 @@
 (setq python-indent-guess-indent-offset-verbose nil)
 (setq org-babel-python-command "/usr/bin/env python3")
 
+;; automatically format code with black on save
+(use-package blacken
+  :hook (python-mode . blacken-mode))
+
 (require 'general-keybinds-layer)
 (language-bindings
   ;; Python bindings
