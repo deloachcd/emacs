@@ -11,6 +11,9 @@
   "e" 'eshell
   "s" 'vterm)
 
+;; useful for bailing out of nano, when git merge pulls it up
+(general-def 'normal vterm-mode-map "X" 'vterm-send-C-x)
+
 ;; NOTE
 ;; this works, but I don't think flycheck is really worth it for
 ;; just checking simple bash syntax errors at this point. maybe
