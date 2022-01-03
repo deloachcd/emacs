@@ -61,12 +61,10 @@
 (setq prog-mode-minor-modes '(display-line-numbers-mode
                               hl-line-mode
                               show-paren-mode
-                              evil-surround-mode
                               electric-pair-mode
                               whitespace-mode))
 (setq text-mode-minor-modes '(hl-line-mode
-                              show-paren-mode
-                              evil-surround-mode))
+                              show-paren-mode))
 
 (add-hooks 'prog-mode-hook prog-mode-minor-modes)
 (add-hooks 'text-mode-hook text-mode-minor-modes)

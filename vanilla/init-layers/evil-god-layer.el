@@ -16,11 +16,12 @@
 
 (use-package evil-surround
   :defer
-  :hook (prog-mode . evil-surround-mode))
+  :hook (prog-mode . evil-surround-mode)
+  :hook (text-mode . evil-surround-mode))
 
 (use-package god-mode
   :after evil
   :config
   (require 'evil-god-state)
-  (evil-define-key 'normal global-map "," 'evil-execute-in-god-state)
+  (general-def 'normal global-map "," 'evil-execute-in-god-state)
   (which-key-enable-god-mode-support))
