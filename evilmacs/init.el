@@ -4,8 +4,8 @@
 (setq exec-path (cons user-local-bin exec-path))
 
 ;; custom variables for some useful paths
-(setq user-layers-path (concat user-emacs-directory "/init-layers"))
-(setq autoload-path (concat user-emacs-directory "/autoload"))
+(setq user-layers-path (concat user-emacs-directory "init-layers"))
+(setq autoload-path (concat user-emacs-directory "autoload"))
 
 ;; The bulk of our configuration happens in these files
 (add-to-list 'load-path user-layers-path)
