@@ -1,4 +1,4 @@
 * emacs
 This repo hosts my emacs config for multiple "distributions", which co-exist on the same machine through [[https://github.com/plexus/chemacs2][chemacs2]]. I mainly focus on my "from scratch" config, listed as the ~evilmacs~ directory (which includes a much more comprehensive README than this one). I keep a [[https://github.com/hlissner/doom-emacs][DOOM]] config around too, but I don't really use it as my primary editor these days (opting instead to integrate a lot of their code and ideas into my own configuration).
 
-Both of these, along with chemacs2 and dependencies, are deployed via my [[https://github.com/deloachcd/portapotty][portapotty]] script.
+Both of these, along with chemacs2 and dependencies, are deployed from this repo via my [[https://github.com/deloachcd/portapotty][portapotty]] script.
