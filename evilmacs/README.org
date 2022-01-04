@@ -22,6 +22,7 @@ Keybindings can be broken down into two types, each accessed with a different gl
 - ~SPC~ bindings
 - ~<comma>~ bindings
 ~SPC~ bindings work exactly like they do in spacemacs/doom, but here are only defined for global bindings that switch modes, switch files, change windows, load pop-up buffers, etc. Whatever they do, it should make sense to do it regardless of the major mode of the buffer they're called from.
+
 ~<comma>~ bindings cover everything that it would be cumbersome/unwieldy to define ~SPC~ bindings for, and do so by activating ~god-mode~ for a single keychord so that keybindings defined using the default scheme can be accessed in a modal fashion. This allows for access to bindings that many major modes include by default (for example, all the bindings that ~org-mode~ includes) in a way that appeals to people allergic to default emacs's heavy use of modifier keys. Basically, if it's a built-in or it only makes sense to do it in a specfic type of buffer or major mode, it should be defined for that mode using the default emacs scheme and accessed via ~god-mode~ through the ~<comma>~ prefix.
 
 As far as I know, this distinction between ~SPC~ and ~<comma>~ bindings is one of the major ways this emac seeks to diverge from the way spacemacs and doom do things, and bring things closer to the emacs defaults in a way that doesn't involve quite so much heavy usage of modifier keys (and without needing foot pedals).
