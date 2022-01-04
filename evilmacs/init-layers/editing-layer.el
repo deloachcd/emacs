@@ -109,13 +109,14 @@
   :config
   (mood-line-mode))
 
-(use-package all-the-icons
-  :config
-  (let ((has-fonts (= (shell-command
-                       "test -e ~/.local/share/fonts/all-the-icons.ttf")
-                      0)))
-    (unless has-fonts
-      (all-the-icons-install-fonts))))
+;; NOTE I don't think I actually need this...
+;;(use-package all-the-icons
+;;  :config
+;;  (let ((has-fonts (= (shell-command
+;;                       "test -e ~/.local/share/fonts/all-the-icons.ttf")
+;;                      0)))
+;;    (unless has-fonts
+;;      (all-the-icons-install-fonts))))
 
 ;; I <3 lifting code from DOOM emacs
 (use-package hl-todo
