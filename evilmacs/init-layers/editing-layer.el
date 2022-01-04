@@ -70,7 +70,7 @@
 (add-hooks 'text-mode-hook text-mode-minor-modes)
 
 ;; Don't litter every working directory with backups
-(defvar backup-dir "~/.emacs.d/backups")
+(defvar backup-dir (concat user-emacs-directory "backups"))
 (setq backup-directory-alist (list (cons "." backup-dir)))
 
 ;; Copypasting outside of emacs
