@@ -7,7 +7,6 @@
   :keymaps 'override)
 (shell-bindings
   "" '(nil :which-key "shell")
-  "m" 'sh-mode
   "e" 'eshell
   "s" 'vterm)
 
