@@ -1,5 +1,6 @@
 ;; Disable annoying warnings in self-compiled emacs
 ;;(setq warning-minimum-level :emergency)
+(setq debug-on-error t)
 
 ;; Ensure emacs sees locally-installed binaries in the user's
 ;; home directory, by adding the local bin to exec-path
@@ -27,8 +28,7 @@
 ;; Ensure our package archives are up-to-date and load the
 ;; package manager
 (setq package-archives
-      '(("gnu" . "https://elpa.gnu.org/packages/")
-        ("melpa" . "https://melpa.org/packages/")
+      '(("melpa" . "https://melpa.org/packages/")
         ("melpa-stable" . "https://stable.melpa.org/packages/")
         ("elpa" . "https://elpa.gnu.org/packages/")))
 (require 'package)
@@ -77,8 +77,11 @@
                                 customize-apropos-faces customize-save-variable
                                 customize-apropos-groups customize-apropos-options
                                 customize-changed-options customize-save-customized))
-  (put sym 'disabled "This emacs doesn't support `customize', configure Emacs from ~/.emacs.d/ instead"))
+  (put sym 'disabled
+       "This emacs doesn't support `customize', configure Emacs from `user-emacs-directory' instead"))
 (put 'customize-themes 'disabled "Not supported, use `load-theme' instead")
 
-;; Send "custom-set-variables" output to hell
-(setq custom-file null-device)
+;; unfortunately, setting this to /dev/null creates errors in the
+;; minibuffer. so I just throw the garbage from customize in
+;; a hidden file that gets gitignored
+(setq custom-file (concat user-emacs-directory ".customize-bullshit.el"))
