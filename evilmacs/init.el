@@ -1,3 +1,6 @@
+;; Disable annoying warnings in self-compiled emacs
+;;(setq warning-minimum-level :emergency)
+
 ;; Ensure emacs sees locally-installed binaries in the user's
 ;; home directory, by adding the local bin to exec-path
 (setq user-local-bin (concat (getenv "HOME") "/.local/bin"))
@@ -29,9 +32,11 @@
         ("melpa-stable" . "https://stable.melpa.org/packages/")
         ("elpa" . "https://elpa.gnu.org/packages/")))
 (require 'package)
+(package-initialize)
 
 ;; Load use-package and make sure each entry is downloaded
-(unless (package-installed-p 'use-package)
+(unless (and (fboundp 'package-installed-p) 
+             (package-installed-p 'use-package))
   (package-refresh-contents)
   (package-install 'use-package))
 (require 'use-package)

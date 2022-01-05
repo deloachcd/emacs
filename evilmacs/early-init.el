@@ -13,8 +13,6 @@
 
 (add-hook 'emacs-startup-hook 'startup/reset-gc)
 
-(setq package-quickstart t)
-
 ;; Disable GUI toolbars
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
