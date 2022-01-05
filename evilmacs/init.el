@@ -1,7 +1,3 @@
-;; Disable annoying warnings in self-compiled emacs
-;;(setq warning-minimum-level :emergency)
-(setq debug-on-error t)
-
 ;; Ensure emacs sees locally-installed binaries in the user's
 ;; home directory, by adding the local bin to exec-path
 (setq user-local-bin (concat (getenv "HOME") "/.local/bin"))
