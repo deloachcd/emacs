@@ -43,6 +43,8 @@
 ;;                      (gethash 'indent_size props))
 ;;              (dtrt-indent-mode -1)))))
 
+(setq tramp-default-method "ssh")
+
 (defun indent-whole-buffer ()
   "indent whole buffer"
   (interactive)
