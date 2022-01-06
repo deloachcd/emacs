@@ -56,10 +56,11 @@
   "k" 'kill-current-buffer
   "K" 'kill-buffer)
 
-(defun dotfile-reload ()
-  "Reloads emacs configuration from init.el"
-  (interactive)
-  (load-file "~/.emacs.d/init.el"))
+(defun sudo-find-file (file-name)
+  "Like find file, but opens the file as root."
+  (interactive "FFind file (sudo): ")
+  (let ((tramp-file-name (concat "/sudo::" (expand-file-name file-name))))
+    (find-file tramp-file-name)))
 
 (general-create-definer file-bindings
   :prefix "SPC f"
@@ -68,7 +69,7 @@
 (file-bindings
   "" '(nil :which-key "files")
   "f" 'find-file
-  "dR" 'dotfile-reload)
+  "s" 'sudo-find-file)
 
 (general-create-definer help-bindings
   :prefix "SPC h"
