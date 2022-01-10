@@ -15,8 +15,9 @@ current line.")
   "Returns a function to hook into 'electric-indent-functions, which allows lines to autoindent on encountering each word in electric-indent-words."
   (lambda (chars)
     (when (and (eolp) electric-indent-words)
-      (backward-word)
-      (looking-at-p (concat "\\<" (regexp-opt electric-indent-words))))))
+      (save-excursion
+        (backward-word)
+        (looking-at-p (concat "\\<" (regexp-opt electric-indent-words)))))))
 
 ;; Bracket pair-matching
 (setq electric-pair-pairs '((?\( . ?\))
