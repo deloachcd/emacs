@@ -90,7 +90,7 @@
 
 ;; Source: http://wenshanren.org/?p=334
 (defun org-insert-src-block (src-code-type)
-  "Insert a `SRC-CODE-TYPE' type source code block in org-mode."
+  "Insert a `src-code-type' type source code block in org-mode."
   (interactive
    (let ((src-code-types
           '("emacs-lisp" "python" "C" "sh" "java" "js" "clojure" "C++" "css"
