@@ -9,9 +9,14 @@
   "" '(nil :which-key "shell")
   "e" 'eshell
   "s" 'vterm)
-
 ;; useful for bailing out of nano, when git merge pulls it up
 (general-def 'normal vterm-mode-map "X" 'vterm-send-C-x)
+
+(require 'electric-layer)
+(defun sh-mode-electric-hook ()
+  (setq electric-indent-words '("else" "elif" "fi" "done" "then" "do" "esac" ";;"))
+  (add-hook 'electric-indent-functions (get-electric-hook) nil 'local-only))
+(add-hook 'sh-mode-hook 'sh-mode-electric-hook)
 
 ;; NOTE
 ;; this works, but I don't think flycheck is really worth it for
