@@ -49,10 +49,9 @@
   (delete-trailing-whitespace)
   (indent-region (point-min) (point-max) nil))
 
-;; Bracket pair-matching
-(setq electric-pair-pairs '((?\( . ?\))
-                            (?\{ . ?\})
-                            (?\[ . ?\])))
+;; Configuration of electric pairs and electric indent happens
+;; in another layer now
+(require 'electric-layer)
 
 (defun add-hooks (mode-hook list-of-hooks)
   (dolist (a-hook list-of-hooks)
