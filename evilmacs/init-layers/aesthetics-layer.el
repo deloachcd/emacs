@@ -84,4 +84,3 @@
   "Function that just adds spaces surrounding the name of the current buffer."
   (concat " " (buffer-name (window-buffer (minibuffer-selected-window))) " "))
 (setq tab-bar-tab-name-function 'padded-tab-name-function)
-(tab-bar-mode)
