@@ -59,24 +59,14 @@
 (set-fonts-from-display-resolution "Fira Code" "Noto Sans")
 (set-frame-defaults 80 35)
 
-(defun border-mode-line-face (mode-line-face line-width)
-  (let* ((mode-line-color (face-attribute mode-line-face :background))
-          (mode-line-box (list :line-width line-width :color mode-line-color)))
-    (set-face-attribute mode-line-face nil :box mode-line-box)))
-
 (use-package mood-line
   :init
   (setq mood-line-show-encoding-information t)
   (setq mood-line-show-eol-style t)
-  (border-mode-line-face 'mode-line 3)
-  (border-mode-line-face 'mode-line-inactive 3)
   :config
   (mood-line-mode))
 
 ;; tab bar aesthetic configuration
-(border-mode-line-face 'tab-bar 1)
-(border-mode-line-face 'tab-bar-tab 1)
-(border-mode-line-face 'tab-bar-tab-inactive 1)
 (setq tab-bar-new-button-show nil)
 (setq tab-bar-close-button-show nil)
 (setq tab-bar-button-margin (cons 4 8))
