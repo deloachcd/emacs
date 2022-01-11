@@ -12,6 +12,9 @@
 ;; useful for bailing out of nano, when git merge pulls it up
 (general-def 'normal vterm-mode-map "X" 'vterm-send-C-x)
 
+;; Integrate vterm with emacs's man page display functionality
+(add-to-list 'vterm-eval-cmds '("man" man))
+
 (require 'electric-layer)
 (defun sh-mode-electric-hook ()
   (setq electric-indent-words '("else" "elif" "fi" "done" "then" "do" "esac" ";;"))
