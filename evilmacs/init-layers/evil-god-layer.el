@@ -4,10 +4,10 @@
 ;; Vim-like bindings
 (use-package evil
   :init
-  (progn
-    (setq evil-want-keybinding nil)
-    (setq evil-overriding-maps nil
-          evil-intercept-maps nil))
+  (setq evil-want-keybinding nil)
+  (setq evil-overriding-maps nil
+        evil-intercept-maps nil)
+  (general-def 'insert global-map "DEL" 'backward-delete-char-untabify)
   :config (evil-mode t))
 
 ;; Make vim-like bindings play nice everywhere
