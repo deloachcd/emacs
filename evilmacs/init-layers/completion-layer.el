@@ -27,4 +27,10 @@
 
 (use-package company
   :defer
-  :hook (prog-mode . company-mode))
+  :hook (prog-mode . company-mode)
+  :config
+  (setq company-minimum-prefix-length 2)
+  ;; minimal company config -- 'tab and go' should solve issue
+  ;; with unwanted autocompletions for variables like 'nil'
+  (company-tng-configure-default)
+  (setq company-backends '((company-capf company-dabbrev-code))))

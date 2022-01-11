@@ -20,28 +20,27 @@
 (setq-default tab-width 4)
 (setq-default standard-indent 4)
 (setq-default indent-tabs-mode nil)
-(setq backward-delete-char-untabify-method 'hungry)
 (setq c-basic-offset tab-width)
+(setq backward-delete-char-untabify-method 'hungry)
+
+;; Only indent the line when at BOL or in a line's indentation. Anywhere else,
+;; insert literal indentation.
+(setq-default tab-always-indent nil)
+
+;; Make `tabify' and `untabify' only affect indentation. Not tabs/spaces in the
+;; middle of a line.
+(setq tabify-regexp "^\t* [ \t]+")
 
 ;; Show mark for indentation via tabs, as they can be
 ;; inconsistent
 (setq whitespace-style '(tab-mark))
 
+;; It seems like neither of these conflict with each other,
+;; so I can just enable both of them in prog modes.
 (use-package dtrt-indent
   :hook (prog-mode . dtrt-indent-mode))
 (use-package editorconfig
   :hook (prog-mode . editorconfig-mode))
-
-;; DEPRECATED I don't even know if this is necessary, dtrt-indent
-;;            and editorconfig seem to work just fine out of the box
-;;  :config
-;;  (add-hook 'editorconfig-after-apply-functions
-;;          (defun editorconfig-disable-indent-detection (props)
-;;            "Inhibit `dtrt-indent' if an explicit indent_style and 
-;;indent_size is specified by editorconfig."
-;;            (when (or (gethash 'indent_style props)
-;;                      (gethash 'indent_size props))
-;;              (dtrt-indent-mode -1)))))
 
 (setq tramp-default-method "ssh")
 
@@ -51,10 +50,9 @@
   (delete-trailing-whitespace)
   (indent-region (point-min) (point-max) nil))
 
-;; Bracket pair-matching
-(setq electric-pair-pairs '((?\( . ?\))
-                            (?\{ . ?\})
-                            (?\[ . ?\])))
+;; Configuration of electric pairs and electric indent happens
+;; in another layer now
+(require 'electric-layer)
 
 (defun add-hooks (mode-hook list-of-hooks)
   (dolist (a-hook list-of-hooks)
@@ -97,19 +95,6 @@
 
 ;; ensure line number width doesn't change as we scroll down
 (setq display-line-numbers-width-start t)
-
-(use-package mood-line
-  :init
-  (setq mood-line-show-encoding-information t)
-  (setq mood-line-show-eol-style t)
-  (defun border-mode-line-face (mode-line-face)
-    (let* ((mode-line-color (face-attribute mode-line-face :background))
-           (mode-line-box (list :line-width 3 :color mode-line-color)))
-      (set-face-attribute mode-line-face nil :box mode-line-box)))
-  (border-mode-line-face 'mode-line)
-  (border-mode-line-face 'mode-line-inactive)
-  :config
-  (mood-line-mode))
 
 ;; NOTE I don't think I actually need this...
 ;;(use-package all-the-icons

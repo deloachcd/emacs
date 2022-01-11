@@ -39,10 +39,12 @@
 (setq use-package-always-ensure t)
 
 ;; The bulk of configuration happens in these layers
-(setq init-config-layers '(;; theming and font scaling happens first
+(setq init-config-layers '(;; theming and font scaling
                            aesthetics
-                           ;; next, which-key and general.el are made available
+                           ;; which-key and general.el
                            general-keybinds
+                           ;; electric pairs/indent ripped off from DOOM emacs
+                           electric
                            ;; general editor configuration happens here
                            editing
                            ;; these layers target specific (sets of) extension(s)

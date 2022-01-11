@@ -95,8 +95,6 @@
   "r" 'indent-region
   "b" 'indent-whole-buffer)
 
-;; these are here for the sake of consistency - Alt bindings
-;; ought to be more commonly used for their convenience
 (general-create-definer window-management-bindings
   :prefix "SPC w"
   :states '(normal emacs)
@@ -109,6 +107,26 @@
   "j" 'windmove-down
   "k" 'windmove-up
   "l" 'windmove-right)
+
+;; Uses tab bar system built-in to emacs 27
+(defun smart-kill-current-tab ()
+  "Close current tab, and hide the tab bar if we only have one left."
+  (interactive)
+  (tab-close)
+  (if (< (length (tab-bar-tabs)) 2)
+      (tab-bar-mode -1)))
+
+(general-create-definer tab-management-bindings
+  :prefix "SPC t"
+  :states '(normal emacs)
+  :keymaps 'override)
+(tab-management-bindings
+  "" '(nil :which-key "tabs")
+  "n" 'tab-next
+  "p" 'tab-previous
+  "N" 'tab-new
+  "k" 'smart-kill-current-tab
+  )
 
 ;; this definer gets used later, to create keybinds within
 ;; language specific configuration layers

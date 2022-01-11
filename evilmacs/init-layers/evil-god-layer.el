@@ -7,12 +7,12 @@
 (use-package evil
   :after undo-tree
   :init
-  (progn
-    (setq evil-want-keybinding nil)
-    (setq evil-overriding-maps nil
-          evil-intercept-maps nil)
-    (setq evil-undo-system 'undo-tree)
-    (setq evil-local-mode-hook 'turn-on-undo-tree-mode))
+  (setq evil-want-keybinding nil)
+  (setq evil-overriding-maps nil
+        evil-intercept-maps nil)
+  (general-def 'insert global-map "DEL" 'backward-delete-char-untabify)
+  (setq evil-undo-system 'undo-tree)
+  (setq evil-local-mode-hook 'turn-on-undo-tree-mode)
   :config (evil-mode t))
 
 ;; Make vim-like bindings play nice everywhere
