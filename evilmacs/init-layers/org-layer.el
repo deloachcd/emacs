@@ -54,7 +54,7 @@
   :init
   (setq org-roam-v2-ack t)
   :custom
-  (org-roam-directory (concat org-root "/roam"))
+  (org-roam-directory (expand-file-name "roam" org-root))
   (org-roam-dailies-directory "journal/")
   (org-roam-db-location
    (expand-file-name (concat "org-roam." (system-name) ".db")
@@ -80,8 +80,8 @@
     (evil-org-agenda-set-keys)))
 
 (setq org-agenda-files
-      (list (concat org-root "/agenda/tasks.org")
-            (concat org-root "/agenda/dates.org")))
+      (list (expand-file-name "agenda/tasks.org" org-root)
+            (expand-file-name "agenda/dates.org" org-root)))
 
 ;; Hopefully, fix messed up indentation in source code blocks
 (setq org-src-fontify-natively t
@@ -109,11 +109,11 @@
 
 (defun org-agenda-edit-tasks ()
   (interactive)
-  (find-file (concat org-root "/agenda/tasks.org")))
+  (find-file (expand-file-name "agenda/tasks.org" org-root)))
 
 (defun org-agenda-edit-dates ()
   (interactive)
-  (find-file (concat org-root "/agenda/dates.org")))
+  (find-file (expand-file-name "agenda/dates.org" org-root)))
 
 ;; keybinds
 (general-create-definer org-bindings
@@ -134,14 +134,16 @@
 (setq initial-scratch-message
       (with-temp-buffer
         (let* ((rnum (number-to-string (+ (random 3) 1)))
-               (banner-file (concat "/res/banners/" rnum ".txt")))
-            (insert-file-contents (concat user-emacs-directory "/res/org/scratch.org"))
-            (insert-file-contents (concat user-emacs-directory banner-file))
-            (insert "#+begin_src python")
-            (insert "\n")
-            (insert "\"\"\"")
-            (insert "\n")
-            (buffer-string))))
+               (banner-file (concat "res/banners/" rnum ".txt")))
+          (insert-file-contents (expand-file-name "res/org/scratch.org"
+                                                  user-emacs-directory))
+          (insert-file-contents (expand-file-name banner-file
+                                                  user-emacs-directory))
+          (insert "#+begin_src python")
+          (insert "\n")
+          (insert "\"\"\"")
+          (insert "\n")
+          (buffer-string))))
 
 (org-bindings
   "" '(nil :which-key "org")

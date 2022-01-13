@@ -4,8 +4,9 @@
 ;; Slight padding for content in frame
 (set-fringe-mode 5)
 
-;; Load theme from ~/.emacs.d/themes
-(add-to-list 'custom-theme-load-path (concat user-emacs-directory "/themes"))
+;; Load themes from ~/.emacs.d/themes
+(add-to-list 'custom-theme-load-path
+             (expand-file-name "themes" user-emacs-directory))
 (load-theme 'dehydrated t)
 
 ;; This function is used to set the fixed and variable pitch fonts, with font
@@ -69,7 +70,7 @@
 ;; tab bar aesthetic configuration
 (setq tab-bar-new-button-show nil)
 (setq tab-bar-close-button-show nil)
-(setq tab-bar-button-margin (cons 4 8))
+(setq tab-bar-button-margin 4)
 (defun padded-tab-name-function ()
   "Function that just adds spaces surrounding the name of the current buffer."
   (concat " " (buffer-name (window-buffer (minibuffer-selected-window))) " "))
