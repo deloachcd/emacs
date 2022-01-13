@@ -29,7 +29,8 @@
   :keymaps 'override)
 
 (root-bindings
-  "SPC" 'execute-extended-command)
+  "SPC" 'execute-extended-command
+  "m" '(nil :which-key "method"))
 
 ;; TODO: SPC e as general eval layer, not just elisp
 (general-create-definer elisp-bindings
@@ -128,12 +129,11 @@
   "k" 'smart-kill-current-tab
   )
 
-;; this definer gets used later, to create keybinds within
-;; language specific configuration layers
 (general-create-definer language-bindings
   :prefix "SPC l"
   :states '(normal emacs)
   :keymaps 'override)
 
 (language-bindings
-  "" '(nil :which-key "lang"))
+  "" '(nil :which-key "lang")
+  "e" 'emacs-lisp-mode)
