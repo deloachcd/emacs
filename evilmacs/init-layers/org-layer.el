@@ -38,11 +38,11 @@
   :defer
   :hook (org-mode . org-mode-setup)
   :config
-  (progn
-    (setf org-blank-before-new-entry '((heading . nil) (plain-list-item . nil)))
-    (setq org-ellipsis " ▾")
-    (set-face-underline 'org-ellipsis nil)
-    (org-font-setup)))
+  (setf org-blank-before-new-entry '((heading . nil) (plain-list-item . nil)))
+  (setq org-ellipsis " ▾")
+  (set-face-underline 'org-ellipsis nil)
+  (org-font-setup)
+  (general-def 'normal org-mode-map "SPC m s" 'org-insert-src-block))
 
 ;; old value: '("♣" "♠" "♦" "♥")
 (use-package org-bullets
