@@ -1,26 +1,3 @@
-;; Ensure emacs sees locally-installed binaries in the user's
-;; home directory, by adding the local bin to exec-path
-(setq user-local-bin (concat (getenv "HOME") "/.local/bin"))
-(setq exec-path (cons user-local-bin exec-path))
-
-;; custom variables for key paths
-(setq user-layers-path (concat user-emacs-directory "init-layers"))
-(setq autoload-path (concat user-emacs-directory "extensions"))
-
-;; The bulk of our configuration happens in these files
-(add-to-list 'load-path user-layers-path)
-(add-to-list 'load-path (concat user-layers-path "/languages"))
-
-;; These should be available to init-layers
-(add-to-list 'load-path autoload-path)
-
-;; This allows loading local config layers from a list
-(defun load-config-layers (layers)
-  (defun get-layer-path (layer-name)
-    (concat (symbol-name layer-name) "-layer.el"))
-  (dolist (layer layers)
-    (load (get-layer-path layer))))
-
 ;; Ensure our package archives are up-to-date and load the
 ;; package manager
 (setq package-archives
@@ -37,6 +14,38 @@
   (package-install 'use-package))
 (require 'use-package)
 (setq use-package-always-ensure t)
+
+;; I mainly use this to keep autosave files contained in user-emacs-directory
+(use-package no-littering
+  :config
+  (setq auto-save-file-name-transforms
+        `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
+  ;; might as well throw customize bullshit in etc/, since it's there
+  (setq custom-file (no-littering-expand-etc-file-name "customize-bullshit.el")))
+
+;; Ensure emacs sees locally-installed binaries in the user's
+;; home directory, by adding the local bin to exec-path
+(setq user-local-bin (expand-file-name ".local/bin" (getenv "HOME")))
+(if (not (member user-local-bin exec-path))
+    (setq exec-path (cons user-local-bin exec-path)))
+
+;; custom variables for key paths
+(setq user-layers-path (expand-file-name "init-layers" user-emacs-directory))
+(setq autoload-path (expand-file-name "extensions" user-emacs-directory))
+
+;; The bulk of our configuration happens in these files
+(add-to-list 'load-path user-layers-path)
+(add-to-list 'load-path (expand-file-name "languages" user-layers-path))
+
+;; These should be available to init-layers
+(add-to-list 'load-path autoload-path)
+
+;; This allows loading local config layers from a list
+(defun load-config-layers (layers)
+  (defun get-layer-path (layer-name)
+    (concat (symbol-name layer-name) "-layer.el"))
+  (dolist (layer layers)
+    (load (get-layer-path layer))))
 
 ;; The bulk of configuration happens in these layers
 (setq init-config-layers '(;; theming and font scaling
@@ -61,6 +70,7 @@
                            python
                            c
                            glsl
+                           yaml
                            ))
 
 (load-config-layers init-config-layers)
@@ -79,8 +89,3 @@
   (put sym 'disabled
        "This emacs doesn't support `customize', configure Emacs from `user-emacs-directory' instead"))
 (put 'customize-themes 'disabled "Not supported, use `load-theme' instead")
-
-;; unfortunately, setting this to /dev/null creates errors in the
-;; minibuffer. so I just throw the garbage from customize in
-;; a hidden file that gets gitignored
-(setq custom-file (concat user-emacs-directory ".customize-bullshit.el"))
