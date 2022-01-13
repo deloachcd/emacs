@@ -4,6 +4,3 @@
 
 ;; syntax highlighting for CMakeLists.txt
 (require 'cmake-mode)
-
-;; OpenGL shading language
-(require 'glsl-mode)

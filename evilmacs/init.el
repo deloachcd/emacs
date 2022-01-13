@@ -3,9 +3,9 @@
 (setq user-local-bin (concat (getenv "HOME") "/.local/bin"))
 (setq exec-path (cons user-local-bin exec-path))
 
-;; custom variables for some useful paths
+;; custom variables for key paths
 (setq user-layers-path (concat user-emacs-directory "init-layers"))
-(setq autoload-path (concat user-emacs-directory "autoload"))
+(setq autoload-path (concat user-emacs-directory "extensions"))
 
 ;; The bulk of our configuration happens in these files
 (add-to-list 'load-path user-layers-path)
@@ -60,6 +60,7 @@
                            emacs-lisp
                            python
                            c
+                           glsl
                            ))
 
 (load-config-layers init-config-layers)
