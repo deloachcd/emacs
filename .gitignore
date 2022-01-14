@@ -14,3 +14,7 @@ custom.el
 .org-id-locations
 bookmarks
 transient
+etc/
+var/
+viper
+tramp
