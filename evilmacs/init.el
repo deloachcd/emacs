@@ -14,6 +14,7 @@
   (package-install 'use-package))
 (require 'use-package)
 (setq use-package-always-ensure t)
+(setq use-package-compute-statistics t)
 
 ;; I mainly use this to keep autosave files contained in user-emacs-directory
 (use-package no-littering
