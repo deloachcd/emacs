@@ -42,7 +42,9 @@
   (setq org-ellipsis " ▾")
   (set-face-underline 'org-ellipsis nil)
   (org-font-setup)
-  (general-def 'normal org-mode-map "SPC m s" 'org-insert-src-block))
+  :general
+  ('normal org-mode-map "SPC m s" 'org-insert-src-block)
+  ('normal org-mode-map "SPC m e" 'org-babel-execute-src-block))
 
 ;; old value: '("♣" "♠" "♦" "♥")
 (use-package org-bullets
