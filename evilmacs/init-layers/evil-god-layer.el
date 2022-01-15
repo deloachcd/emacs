@@ -12,15 +12,8 @@
         evil-intercept-maps nil)
   (setq evil-undo-system 'undo-tree)
   (setq evil-local-mode-hook 'turn-on-undo-tree-mode)
-  :config
-  (evil-mode t)
-  (general-define-key
-   :keymaps 'global-map
-   [remap evil-delete-backward-char-and-join] 'backward-delete-char-untabify))
-
-;; NOTE keeping this here just as a syntax reference, will probably remove
-;; as soon as I use general-def somewhere else
-;;(general-def 'insert global-map "DEL" 'backward-delete-char-untabify)
+  :config (evil-mode t)
+  :general ('insert prog-mode-map "DEL" 'backward-delete-char-untabify))
 
 ;; Make vim-like bindings play nice everywhere
 (use-package evil-collection
