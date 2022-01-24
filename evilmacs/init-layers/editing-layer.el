@@ -35,6 +35,11 @@
 ;; inconsistent
 (setq whitespace-style '(tab-mark))
 
+;; Port over a simplified version of DOOM emacs's indent system, and
+;; use it here
+(require 'doomlike-delete-backward-char)
+(advice-add 'delete-backward-char :override 'doomlike-delete-backward-char)
+
 ;; It seems like neither of these conflict with each other,
 ;; so I can just enable both of them in prog modes.
 (use-package dtrt-indent
