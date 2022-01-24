@@ -14,14 +14,11 @@
 
 ;; Indentation
 
-;; Prefer spaces over tabs, standard width of 4, because
-;; not every editor is smart enough to render tabs like
-;; this out of the box.
-(setq-default tab-width 4)
-(setq-default standard-indent 4)
-(setq-default indent-tabs-mode nil)
-(setq c-basic-offset tab-width)
-(setq backward-delete-char-untabify-method 'hungry)
+;; Prefer spaces over tabs, standard width of 4, because not every editor is
+;; smart enough to render tabs like this out of the box.
+(setq-default tab-width 4
+              standard-indent 4
+              indent-tabs-mode nil)
 
 ;; Only indent the line when at BOL or in a line's indentation. Anywhere else,
 ;; insert literal indentation.
@@ -35,17 +32,12 @@
 ;; inconsistent
 (setq whitespace-style '(tab-mark))
 
-;; Port over a simplified version of DOOM emacs's indent system, and
-;; use it here
+;; Consume indent whitespace the way you'd expect to
 (require 'doomlike-delete-backward-char)
 (advice-add 'delete-backward-char :override 'doomlike-delete-backward-char)
 
-;; It seems like neither of these conflict with each other,
-;; so I can just enable both of them in prog modes.
-(use-package dtrt-indent
-  :hook (prog-mode . dtrt-indent-mode))
-(use-package editorconfig
-  :hook (prog-mode . editorconfig-mode))
+;; Leverage `editorconfig' and/or `dtrt-indent' to detect indentation
+(require 'doomlike-detect-indent)
 
 (setq tramp-default-method "ssh")
 
