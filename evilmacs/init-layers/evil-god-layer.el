@@ -12,8 +12,8 @@
         evil-intercept-maps nil)
   (setq evil-undo-system 'undo-tree)
   (setq evil-local-mode-hook 'turn-on-undo-tree-mode)
-  :config (evil-mode t)
-  :general ('insert prog-mode-map "DEL" 'backward-delete-char-untabify))
+  :config (evil-mode t))
+  ;;:general ('insert prog-mode-map "DEL" 'backward-delete-char-untabify))
 
 ;; Make vim-like bindings play nice everywhere
 (use-package evil-collection
