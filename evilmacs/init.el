@@ -10,6 +10,8 @@
 ;; Load use-package and make sure each entry is downloaded
 (unless (and (fboundp 'package-installed-p) 
              (package-installed-p 'use-package))
+  ;; NOTE package-refresh-contents needs to be run every time a new
+  ;; dependency is added to this config!
   (package-refresh-contents)
   (package-install 'use-package))
 (require 'use-package)
