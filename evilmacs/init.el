@@ -68,6 +68,7 @@
                            org
                            git
                            shell
+                           restclient
                            ;; language-specific layers
                            emacs-lisp
                            python
