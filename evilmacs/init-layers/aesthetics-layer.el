@@ -7,7 +7,7 @@
 ;; Load themes from ~/.emacs.d/themes
 (add-to-list 'custom-theme-load-path
              (expand-file-name "themes" user-emacs-directory))
-(load-theme 'dehydrated t)
+(load-theme 'modus-operandi t)
 
 ;; This function is used to set the fixed and variable pitch fonts, with font
 ;; size being set relative to display resolution. There's no formula for this
