@@ -63,7 +63,9 @@
                      org-roam-directory))
   :config
   (org-roam-db-autosync-enable)
-  (setq org-M-RET-may-split-line nil))
+  (setq org-M-RET-may-split-line nil)
+  :general
+  ('normal org-mode-map "SPC m i" 'org-roam-node-insert))
 
 (use-package evil-org
   :defer
@@ -131,21 +133,21 @@
 (setq org-confirm-babel-evaluate nil)
 
 ;; org babel scratch buffer
-(setq inhibit-startup-message t)
-(setq initial-major-mode 'org-mode)
-(setq initial-scratch-message
-      (with-temp-buffer
-        (let* ((rnum (number-to-string (+ (random 3) 1)))
-               (banner-file (concat "res/banners/" rnum ".txt")))
-          (insert-file-contents (expand-file-name "res/org/scratch.org"
-                                                  user-emacs-directory))
-          (insert-file-contents (expand-file-name banner-file
-                                                  user-emacs-directory))
-          (insert "#+begin_src python")
-          (insert "\n")
-          (insert "\"\"\"")
-          (insert "\n")
-          (buffer-string))))
+(setq inhibit-startup-message nil)
+;;(setq initial-major-mode 'org-mode)
+;;(setq initial-scratch-message
+;;      (with-temp-buffer
+;;        (let* ((rnum (number-to-string (+ (random 3) 1)))
+;;               (banner-file (concat "res/banners/" rnum ".txt")))
+;;          (insert-file-contents (expand-file-name "res/org/scratch.org"
+;;                                                  user-emacs-directory))
+;;          (insert-file-contents (expand-file-name banner-file
+;;                                                  user-emacs-directory))
+;;          (insert "#+begin_src python")
+;;          (insert "\n")
+;;          (insert "\"\"\"")
+;;          (insert "\n")
+;;          (buffer-string))))
 
 (org-bindings
   "" '(nil :which-key "org")
