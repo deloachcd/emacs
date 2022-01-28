@@ -7,7 +7,12 @@
 ;; Load themes from ~/.emacs.d/themes
 (add-to-list 'custom-theme-load-path
              (expand-file-name "themes" user-emacs-directory))
-(load-theme 'modus-operandi t)
+;; modus theme configuration
+(progn
+  (setq modus-themes-bold-constructs t)
+  (setq modus-themes-italic-constructs t)
+  (setq modus-themes-syntax '(faint))
+  (load-theme 'modus-operandi t))
 
 ;; This function is used to set the fixed and variable pitch fonts, with font
 ;; size being set relative to display resolution. There's no formula for this
@@ -38,11 +43,11 @@
 
       (cond (;; 4k
              (string-equal resolution "3840x2160")
-             (set-fonts-from-heights 115 125))
+             (set-fonts-from-heights 135 125))
 
             ;; 1080p
             ((string-equal resolution "1920x1080")
-             (set-fonts-from-heights 110 120))
+             (set-fonts-from-heights 130 120))
 
             ;; Default case - same as 1080p for now
             (t (set-fonts-from-heights 120 130))))))
@@ -57,8 +62,8 @@
         (when window-system (set-frame-size (selected-frame) frame-width frame-height)))))
 
 ;; We call our functions to apply their changes here
-(set-fonts-from-display-resolution "Fira Code" "Noto Sans")
-(set-frame-defaults 80 35)
+(set-fonts-from-display-resolution "Ubuntu Mono" "Noto Sans")
+(set-frame-defaults 87 35)
 
 (use-package mood-line
   :init
