@@ -72,6 +72,15 @@
   :config
   (mood-line-mode))
 
+(use-package dashboard
+  :init
+  (setq dashboard-center-content t)
+  (setq dashboard-set-footer nil)
+  :config
+  (dashboard-setup-startup-hook)
+  (setq dashboard-items '((recents . 5)
+                          (projects . 5))))
+
 ;; tab bar aesthetic configuration
 (setq tab-bar-new-button-show nil)
 (setq tab-bar-close-button-show nil)
