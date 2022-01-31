@@ -70,7 +70,8 @@
 (file-bindings
   "" '(nil :which-key "files")
   "f" 'find-file
-  "s" 'sudo-find-file)
+  "s" 'sudo-find-file
+  "d" 'dired)
 
 (general-create-definer help-bindings
   :prefix "SPC h"
