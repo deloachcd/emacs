@@ -63,7 +63,7 @@
 
 ;; We call our functions to apply their changes here
 (set-fonts-from-display-resolution "Ubuntu Mono" "Noto Sans")
-(set-frame-defaults 87 35)
+(set-frame-defaults 88 36)
 
 (use-package mood-line
   :init
