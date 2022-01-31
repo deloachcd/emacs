@@ -1,4 +1,8 @@
-(use-package vterm)
+(use-package vterm
+  :config
+  ;; fix invisible progress text in apt commands due to green background
+  (when (string= (car custom-enabled-themes) "modus-operandi")
+      (set-face-attribute 'vterm-color-black nil :foreground "#000000")))
 
 (require 'general-keybinds-layer)
 (general-create-definer shell-bindings
