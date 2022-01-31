@@ -27,18 +27,8 @@
 (setq modus-themes-syntax '(faint))
 (load-theme 'modus-operandi t)
 
-;; This function is used to set the fixed and variable pitch fonts, with font
-;; size being set relative to display resolution. There's no formula for this
-;; at this point, so all resolutions are hardcoded (which will probably look
-;; better anyway)
-(defun set-fonts-from-display-resolution (fixed-pitch-font variable-pitch-font)
-  (progn
-    (defun get-display-resolution-windows ()
-      "TODO: actually implement this"
-      "1920x1080")
-    (defun get-display-resolution-linux ()
-      (shell-command-to-string "xrandr | grep '*' | head -n 1 | awk '{ printf $1 }'"))
-
+(defun size-and-apply-fonts (fixed-pitch-font variable-pitch-font)
+  "Sets the and sizes the fixed and variable pitch fonts for current and new frames, accounting for whether or not the running display is HiDPI."
     (defun set-fonts-from-heights (fixed-pitch-height variable-pitch-height)
       (set-face-attribute 'default nil
                           :font fixed-pitch-font :height fixed-pitch-height)
@@ -49,21 +39,8 @@
       (add-to-list 'default-frame-alist (cons 'font 'default))
       (set-frame-font 'default nil t))
 
-    (let ((resolution (cond ((string-equal system-type "gnu/linux")
-                             (get-display-resolution-linux))
-                            ((string-equal system-type "windows-nt")
-                             (get-display-resolution-windows)))))
-
-      (cond (;; 4k
-             (string-equal resolution "3840x2160")
-             (set-fonts-from-heights 135 125))
-
-            ;; 1080p
-            ((string-equal resolution "1920x1080")
-             (set-fonts-from-heights 130 120))
-
-            ;; Default case - same as 1080p for now
-            (t (set-fonts-from-heights 120 130))))))
+    (set-fonts-from-heights (+ 130 (if display-is-hidpi 5 0))
+                            (+ 120 (if display-is-hidpi 5 0))))
 
 ;; This function sets default params for a frame, and resizes the current frame
 ;; to that size
@@ -75,7 +52,7 @@
         (when window-system (set-frame-size (selected-frame) frame-width frame-height)))))
 
 ;; We call our functions to apply their changes here
-(set-fonts-from-display-resolution "Ubuntu Mono" "Noto Sans")
+(size-and-apply-fonts "Ubuntu Mono" "Noto Sans")
 (set-frame-defaults 88 36)
 
 (use-package mood-line
