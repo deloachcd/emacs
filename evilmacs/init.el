@@ -69,6 +69,7 @@
                            git
                            shell
                            restclient
+                           perspective
                            ;; language-specific layers
                            emacs-lisp
                            python
