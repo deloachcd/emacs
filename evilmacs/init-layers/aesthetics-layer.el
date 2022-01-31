@@ -1,18 +1,31 @@
-;; This layer is for disabling GUI elements, loading our preferred color theme
-;; and scaling fonts properly before package refresh.
+(defvar display-is-hidpi nil
+  "true when emacs is running in a graphical session on a HiDPI display")
+
+(defun get-display-resolution-linux ()
+  (shell-command-to-string "xrandr | grep '*' | head -n 1 | awk '{ printf $1 }'"))
+
+(when (and (string= system-type "gnu/linux")
+         (string= (get-display-resolution-linux) "3840x2160"))
+    (setq display-is-hidpi t))
+
+(defvar global-fringe-width 5
+  "width for fringes on side of window")
+
+;; extra pixel for HiDPI display
+(when display-is-hidpi
+  (setq global-fringe-width 6))
 
 ;; Slight padding for content in frame
-(set-fringe-mode 5)
+(set-fringe-mode global-fringe-width)
 
 ;; Load themes from ~/.emacs.d/themes
 (add-to-list 'custom-theme-load-path
              (expand-file-name "themes" user-emacs-directory))
 ;; modus theme configuration
-(progn
-  (setq modus-themes-bold-constructs t)
-  (setq modus-themes-italic-constructs t)
-  (setq modus-themes-syntax '(faint))
-  (load-theme 'modus-operandi t))
+(setq modus-themes-bold-constructs t)
+(setq modus-themes-italic-constructs t)
+(setq modus-themes-syntax '(faint))
+(load-theme 'modus-operandi t)
 
 ;; This function is used to set the fixed and variable pitch fonts, with font
 ;; size being set relative to display resolution. There's no formula for this
