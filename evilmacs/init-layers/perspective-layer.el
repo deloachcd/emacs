@@ -10,5 +10,6 @@
 (perspective-bindings
   ""   '(nil :which-key "perspective")
   "r" 'persp-switch
+  "R" 'persp-rename
   "n" 'persp-next
   "p" 'persp-prev)
