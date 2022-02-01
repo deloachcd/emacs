@@ -127,8 +127,16 @@
   "n" 'tab-next
   "p" 'tab-previous
   "N" 'tab-new
-  "k" 'smart-kill-current-tab
-  )
+  "k" 'smart-kill-current-tab)
+
+(general-create-definer shell-bindings
+  :prefix "SPC s"
+  :states '(normal emacs visual)
+  :keymaps 'override)
+(shell-bindings
+  "" '(nil :which-key "shell")
+  "e" 'eshell
+  "s" 'shell)
 
 (general-create-definer language-bindings
   :prefix "SPC l"

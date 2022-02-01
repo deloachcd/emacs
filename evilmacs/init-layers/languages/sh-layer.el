@@ -1,24 +1,3 @@
-(use-package vterm
-  :config
-  ;; fix invisible progress text in apt commands due to green background
-  (when (string= (car custom-enabled-themes) "modus-operandi")
-      (set-face-attribute 'vterm-color-black nil :foreground "#000000")))
-
-(require 'general-keybinds-layer)
-(general-create-definer shell-bindings
-  :prefix "SPC s"
-  :states '(normal emacs visual)
-  :keymaps 'override)
-(shell-bindings
-  "" '(nil :which-key "shell")
-  "e" 'eshell
-  "s" 'vterm)
-;; useful for bailing out of nano, when git merge pulls it up
-(general-def 'normal vterm-mode-map "X" 'vterm-send-C-x)
-
-;; Integrate vterm with emacs's man page display functionality
-(add-to-list 'vterm-eval-cmds '("man" man))
-
 (require 'electric-layer)
 (defun sh-mode-electric-hook ()
   (setq electric-indent-words '("else" "elif" "fi" "done" "then" "do" "esac" ";;"))
