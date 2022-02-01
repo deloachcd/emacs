@@ -67,10 +67,11 @@
                            flycheck
                            org
                            git
-                           shell
                            restclient
                            perspective
+                           vterm
                            ;; language-specific layers
+                           sh
                            emacs-lisp
                            python
                            c
