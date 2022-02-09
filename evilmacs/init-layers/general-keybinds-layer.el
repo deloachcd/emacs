@@ -51,7 +51,7 @@
   :keymaps 'override)
 (buffer-management-bindings
   "" '(nil :which-key "buffers")
-  "b" 'consult-buffer
+  "b" 'switch-to-buffer
   "n" 'next-buffer
   "p" 'previous-buffer
   "k" 'kill-current-buffer
