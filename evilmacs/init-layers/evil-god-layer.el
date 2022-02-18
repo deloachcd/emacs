@@ -8,16 +8,15 @@
   :after undo-tree
   :init
   (setq evil-want-keybinding nil)
+  (setq evil-disable-insert-state-bindings t)
   (setq evil-overriding-maps nil
         evil-intercept-maps nil)
   (setq evil-undo-system 'undo-tree)
   (setq evil-local-mode-hook 'turn-on-undo-tree-mode)
-  :config (evil-mode t)
-  :general
-  ;; Make C-c, C-x, C-v behave like you expect them to in insert mode
-  ('insert "C-c" 'cua-copy-region)
-  ('insert "C-x" 'cua-cut-region)
-  ('insert "C-v" 'cua-paste))
+  :config 
+  (evil-mode t)
+  (add-hook 'evil-insert-state-entry-hook (lambda () (cua-mode +1)))
+  (add-hook 'evil-insert-state-exit-hook (lambda () (cua-mode -1))))
 
 ;; Make vim-like bindings play nice everywhere
 (use-package evil-collection
