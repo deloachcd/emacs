@@ -67,6 +67,7 @@
                            flycheck
                            org
                            git
+                           latex
                            restclient
                            perspective
                            vterm
