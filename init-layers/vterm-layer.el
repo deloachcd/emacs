@@ -1,3 +1,5 @@
+(require 'general-keybinds-layer)
+
 (use-package vterm
   :config
   ;; fix invisible progress text in apt commands due to green background

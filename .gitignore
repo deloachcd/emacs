@@ -1,6 +1,9 @@
+.customize-bullshit.el
 package-quickstart.el
 *~
 elpa/
+etc/
+var/
 auto-save-list/
 projectile-bookmarks*
 projectile.cache
@@ -14,7 +17,3 @@ custom.el
 .org-id-locations
 bookmarks
 transient
-etc/
-var/
-viper
-tramp
