@@ -21,13 +21,27 @@
 ;; Load themes from ~/.emacs.d/themes
 (add-to-list 'custom-theme-load-path
              (expand-file-name "themes" user-emacs-directory))
-;; modus theme configuration
-(setq modus-themes-bold-constructs t)
-(setq modus-themes-italic-constructs t)
-(setq modus-themes-syntax '(faint))
-(load-theme 'modus-operandi t)
+(use-package modus-themes
+  :init
+  ;; modus theme configuration
+  ;; -------------------------
+  ;; general options
+  (setq modus-themes-bold-constructs t)
+  (setq modus-themes-italic-constructs t)
+  (setq modus-themes-syntax '(faint))
+  ;; org-mode
+  (setq modus-themes-org-blocks 'gray-background)
+  (setq modus-themes-markup '(background intense))
+  (setq modus-themes-headings
+        '((1 . (1.3))
+          (2 . (1.2))
+          (3 . (1.15))
+          (4 . (1.1))))
+  (setq modus-themes-mixed-fonts t)
+  :config
+  (load-theme 'modus-operandi t))
 
-(defun size-and-apply-fonts (fixed-pitch-font variable-pitch-font)
+(defun size-and-apply-fonts (fixed-pitch-font variable-pitch-font fixed-size variable-size)
   "Sets the and sizes the fixed and variable pitch fonts for current and new frames, accounting for whether or not the running display is HiDPI."
     (defun set-fonts-from-heights (fixed-pitch-height variable-pitch-height)
       (set-face-attribute 'default nil
@@ -39,8 +53,8 @@
       (add-to-list 'default-frame-alist (cons 'font 'default))
       (set-frame-font 'default nil t))
 
-    (set-fonts-from-heights (+ 130 (if display-is-hidpi 5 0))
-                            (+ 120 (if display-is-hidpi 5 0))))
+    (set-fonts-from-heights (+ fixed-size (if display-is-hidpi 5 0))
+                            (+ variable-size (if display-is-hidpi 5 0))))
 
 ;; This function sets default params for a frame, and resizes the current frame
 ;; to that size
@@ -52,7 +66,9 @@
         (when window-system (set-frame-size (selected-frame) frame-width frame-height)))))
 
 ;; We call our functions to apply their changes here
-(size-and-apply-fonts "Ubuntu Mono" "Noto Sans")
+(if (string-equal system-type "darwin")
+    (size-and-apply-fonts "Menlo" "Helvetica" 140 150)
+  (size-and-apply-fonts "Ubuntu Mono" "Noto Sans" 130 120))
 (set-frame-defaults 88 36)
 
 (use-package mood-line

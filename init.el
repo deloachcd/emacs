@@ -44,11 +44,21 @@
 (add-to-list 'load-path autoload-path)
 
 ;; This allows loading local config layers from a list
+(defun get-platform-layers (layers)
+  (defun appendv (l v) (append l (list v)))
+  (let (platform-layers '())
+    (dolist (layer layers platform-layers)
+      (cond ((and (listp layer)
+                   (or
+                    (and (string= system-type "gnu/linux") (eq (car layer) :if-linux))
+                    (and (string= system-type "darwin") (eq (car layer) :if-mac))))
+             (setq platform-layers (appendv platform-layers (cadr layer))))
+            ((symbolp layer)
+             (setq platform-layers (appendv platform-layers layer)))))))
+
 (defun load-config-layers (layers)
-  (defun get-layer-path (layer-name)
-    (concat (symbol-name layer-name) "-layer.el"))
-  (dolist (layer layers)
-    (load (get-layer-path layer))))
+  (dolist (layer (get-platform-layers layers))
+    (load (concat (symbol-name layer) "-layer.el"))))
 
 ;; The bulk of configuration happens in these layers
 (setq init-config-layers '(;; theming and font scaling
@@ -70,6 +80,7 @@
                            latex
                            restclient
                            perspective
+                           ;;(:if-linux vterm)
                            vterm
                            ;; language-specific layers
                            sh
