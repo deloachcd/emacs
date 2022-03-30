@@ -18,3 +18,6 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (tooltip-mode -1)
+
+;; Disable flood of native comp warnings buffer messages
+(setq native-comp-async-report-warnings-errors nil)

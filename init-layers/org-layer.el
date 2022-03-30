@@ -15,25 +15,6 @@
   (visual-line-mode 1)
   (org-indent-mode 1))
 
-(defun org-font-setup ()
-  (dolist (face '((org-document-title . 1.5)
-                  (org-level-1 . 1.25)
-                  (org-level-2 . 1.1)
-                  (org-level-3 . 1.0)
-                  (org-level-4 . 1.0)
-                  (org-level-5 . 1.0)
-                  (org-level-6 . 1.0)
-                  (org-level-7 . 1.0)
-                  (org-level-8 . 1.0)))
-    (set-face-attribute (car face) nil
-                        :inherit 'variable-pitch :weight 'bold :height (cdr face)))
-
-  ;; TODO: maybe fork the theme and set this there?
-  (if 'doom-homage-white-active
-      (dolist (face '(org-block-begin-line
-                      org-block-end-line))
-        (set-face-attribute face nil :foreground "#7c7c7c"))))
-
 (use-package org
   :defer
   :hook (org-mode . org-mode-setup)
@@ -41,10 +22,17 @@
   (setf org-blank-before-new-entry '((heading . nil) (plain-list-item . nil)))
   (setq org-ellipsis " ▾")
   (set-face-underline 'org-ellipsis nil)
-  (org-font-setup)
+  ;; make sure no theme makes our titles overly large
+  (set-face-attribute 'org-document-title nil :inherit 'variable-pitch
+                      :weight 'bold :height 1.1)
   :general
   ('normal org-mode-map "SPC m s" 'org-insert-src-block)
   ('normal org-mode-map "SPC m e" 'org-babel-execute-src-block))
+
+;; presentations from emacs
+(use-package org-tree-slide
+  :config
+  (setq org-image-actual-width nil))
 
 ;; old value: '("♣" "♠" "♦" "♥")
 (use-package org-bullets
@@ -162,3 +150,5 @@
   "a t" 'org-agenda-edit-tasks
   "a d" 'org-agenda-edit-dates
   )
+
+(use-package org-tree-slide)
