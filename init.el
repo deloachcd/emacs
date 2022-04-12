@@ -80,8 +80,8 @@
                            latex
                            restclient
                            perspective
-                           ;;(:if-linux vterm)
-                           vterm
+                           (:if-linux vterm)
+                           ;;vterm
                            ;; language-specific layers
                            sh
                            emacs-lisp
