@@ -43,6 +43,10 @@
 ;; These should be available to init-layers
 (add-to-list 'load-path autoload-path)
 
+;;(concat (if (string= system-type "darwin")
+;;            "/Users/"
+;;          "/home/") user-login-name "/.local/bin")
+
 ;; This allows loading local config layers from a list
 (defun get-platform-layers (layers)
   (defun appendv (l v) (append l (list v)))
@@ -80,8 +84,8 @@
                            latex
                            restclient
                            perspective
-                           (:if-linux vterm)
-                           ;;vterm
+                           shell
+                           vterm
                            ;; language-specific layers
                            sh
                            emacs-lisp
