@@ -10,6 +10,7 @@ successfully sets indent_style/indent_size.")
 (use-package dtrt-indent
   :after editorconfig
   :hook (prog-mode . doomlike-detect-indentation-h)
+  :hook (conf-mode . doomlike-detect-indentation-h)
   :init
   ;; Reduced from the default of 5000 for slightly faster analysis
   (setq dtrt-indent-max-lines 2000)
