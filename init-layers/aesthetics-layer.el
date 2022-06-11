@@ -71,17 +71,23 @@
   (size-and-apply-fonts "Ubuntu Mono" "Noto Sans" 130 120))
 (set-frame-defaults 88 36)
 
-(use-package mood-line
+;;(use-package mood-line
+;;  :init
+;;  (setq mood-line-show-encoding-information t)
+;;  (setq mood-line-show-eol-style t)
+;;  :config
+;;  (mood-line-mode))
+(use-package minions
   :init
-  (setq mood-line-show-encoding-information t)
-  (setq mood-line-show-eol-style t)
-  :config
-  (mood-line-mode))
+  (setq minions-mode-line-lighter nil)
+  (setq minions-mode-line-delimiters nil)
+  :config (minions-mode 1))
 
 (use-package dashboard
   :init
   (setq dashboard-center-content t)
   (setq dashboard-set-footer nil)
+  ;;(setq dashboard-startup-banner 1)
   :config
   (dashboard-setup-startup-hook)
   (setq dashboard-items '((recents . 5)
