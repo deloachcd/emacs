@@ -82,6 +82,7 @@
                            perspective
                            shell
                            vterm
+                           webshit
                            ;; language-specific layers
                            sh
                            emacs-lisp
