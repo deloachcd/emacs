@@ -14,9 +14,7 @@
   (setq evil-undo-system 'undo-tree)
   (setq evil-local-mode-hook 'turn-on-undo-tree-mode)
   :config 
-  (evil-mode t)
-  (add-hook 'evil-insert-state-entry-hook (lambda () (cua-mode +1)))
-  (add-hook 'evil-insert-state-exit-hook (lambda () (cua-mode -1))))
+  (evil-mode t))
 
 ;; Make vim-like bindings play nice everywhere
 (use-package evil-collection
