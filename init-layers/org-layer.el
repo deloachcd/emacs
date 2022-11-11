@@ -10,8 +10,8 @@
   :init (setq mixed-pitch-set-height t))
 
 (defun org-mode-setup ()
-  (setq org-hide-emphasis-markers t)
-  (mixed-pitch-mode 1)
+  ;;(setq org-hide-emphasis-markers t)
+  ;;(mixed-pitch-mode 1)
   (visual-line-mode 1)
   (org-indent-mode 1))
 

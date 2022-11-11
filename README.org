@@ -31,19 +31,19 @@ As far as I know, this distinction between ~SPC~ and ~<comma>~ bindings is one o
 This config uses [[https://github.com/justbur/emacs-which-key][which-key]] to provide a nice pop-up list of labelled prefixes and bindings for keychords as you type them. Paging does not work reliably in the minibuffer, though, so if there are so many options that you can't read them all in the pop-up (for example, the many built-in bindings for ~org-mode~) you can type ~C-h~ after the prefix you're using to get a full list of keybindings available for it in the current major mode (as far as I know, this is the only time you really need to use a modifier key with this config).
 
 ** Global mnemonics
-| ~SPC~ binding | Mnemonic    | Description                                         |
-|-------------+-------------+-----------------------------------------------------|
-| ~SPC~         | n/a         | ~execute-extended-command~, a.k.a. ~M-x~                |
-| ~b~           | buffers     | Switch between and kill buffers                     |
-| ~e~           | eval        | Evaluate elisp                                      |
-| ~f~           | files       | Switch between files (integrates with vterm)        |
-| ~g~           | git         | Access git, mainly through [[https://magit.vc/][magit]]                    |
-| ~h~           | help        | Built-in emacs documentation helpers, plus [[https://github.com/Wilfred/helpful][helpful]]  |
-| ~m~           | method      | User method associated with buffer's major mode     |
+| ~SPC~ binding | Mnemonic    | Description                                           |
+|---------------+-------------+-------------------------------------------------------|
+| ~SPC~         | n/a         | ~execute-extended-command~, a.k.a. ~M-x~              |
+| ~b~           | buffers     | Switch between and kill buffers                       |
+| ~e~           | eval        | Evaluate elisp                                        |
+| ~f~           | files       | Switch between files (integrates with vterm)          |
+| ~g~           | git         | Access git, mainly through [[https://magit.vc/][magit]]                      |
+| ~h~           | help        | Built-in emacs documentation helpers, plus [[https://github.com/Wilfred/helpful][helpful]]    |
+| ~m~           | method      | User method associated with buffer's major mode       |
 | ~o~           | org         | Manage [[https://github.com/org-roam/org-roam][org-roam]] notes and interface with ~org-agenda~ |
-| ~p~           | project     | Project management with [[https://github.com/bbatsov/projectile][projectile]]                  |
-| ~r~           | perspective | Manage perspectives with [[https://github.com/nex3/perspective-el][perspective-el]]             |
-| ~s~           | shell       | Use one of emacs's integrated shells                |
+| ~p~           | project     | Project management with [[https://github.com/bbatsov/projectile][projectile]]                    |
+| ~r~           | perspective | Manage perspectives with [[https://github.com/nex3/perspective-el][perspective-el]]               |
+| ~s~           | shell       | Use one of emacs's integrated shells                  |
 | ~t~           | tabs        | Manage tabs with ~tab-bar-mode~                       |
-| ~v~           | vterm       | Use vterm, the better integrated shell              |
-| ~w~           | window      | Switch windows with HJKL and split them             |
+| ~v~           | vterm       | Use vterm, the better integrated shell                |
+| ~w~           | window      | Switch windows with HJKL and split them               |
