@@ -53,8 +53,9 @@
       (add-to-list 'default-frame-alist (cons 'font 'default))
       (set-frame-font 'default nil t))
 
-    (set-fonts-from-heights (+ fixed-size (if display-is-hidpi 5 0))
-                            (+ variable-size (if display-is-hidpi 5 0))))
+    (let ((bump-factor (if display-is-hidpi 15 0)))
+      (set-fonts-from-heights (+ fixed-size bump-factor)
+                              (+ variable-size bump-factor))))
 
 ;; This function sets default params for a frame, and resizes the current frame
 ;; to that size
@@ -71,17 +72,12 @@
   (size-and-apply-fonts "Ubuntu Mono" "Noto Sans" 130 120))
 (set-frame-defaults 88 36)
 
-;;(use-package mood-line
-;;  :init
-;;  (setq mood-line-show-encoding-information t)
-;;  (setq mood-line-show-eol-style t)
-;;  :config
-;;  (mood-line-mode))
-(use-package minions
+(use-package mood-line
   :init
-  (setq minions-mode-line-lighter nil)
-  (setq minions-mode-line-delimiters nil)
-  :config (minions-mode 1))
+  (setq mood-line-show-encoding-information t)
+  (setq mood-line-show-eol-style t)
+  :config
+  (mood-line-mode))
 
 (use-package dashboard
   :init

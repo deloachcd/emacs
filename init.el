@@ -63,7 +63,7 @@
 ;; The bulk of configuration happens in these layers
 (setq init-config-layers '(;; theming and font scaling
                            aesthetics
-                           ;; which-key and general.el
+                           ;; which-key and general.el, keybindings for builtins
                            general-keybinds
                            ;; electric pairs/indent ripped off from DOOM emacs
                            electric
