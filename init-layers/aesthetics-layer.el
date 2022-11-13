@@ -33,10 +33,10 @@
   (setq modus-themes-org-blocks 'gray-background)
   (setq modus-themes-markup '(background intense))
   (setq modus-themes-headings
-        '((1 . (1.3))
-          (2 . (1.2))
-          (3 . (1.15))
-          (4 . (1.1))))
+        '((1 . (1.1))
+          (2 . (1.05))
+          (3 . (1.0))
+          (4 . (1.0))))
   (setq modus-themes-mixed-fonts t)
   :config
   (load-theme 'modus-operandi t))
