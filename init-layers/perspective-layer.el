@@ -14,4 +14,5 @@
   "r" 'persp-switch
   "R" 'persp-rename
   "n" 'persp-next
-  "p" 'persp-prev)
+  "p" 'persp-prev
+  "k" 'persp-kill)
