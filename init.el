@@ -81,7 +81,7 @@
                            restclient
                            perspective
                            shell
-                           vterm
+                           (:if-linux vterm)
                            webshit
                            ;; language-specific layers
                            sh
