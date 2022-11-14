@@ -94,6 +94,9 @@
 ;; ensure line number width doesn't change as we scroll down
 (setq display-line-numbers-width-start t)
 
+;; set fill-column to 80 in accordance with the sacred 80 column rule
+(setq fill-column 80)
+
 ;; NOTE I don't think I actually need this...
 ;;(use-package all-the-icons
 ;;  :config
