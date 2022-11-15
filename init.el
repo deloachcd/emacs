@@ -90,6 +90,7 @@
                            c
                            glsl
                            conf
+                           go
                            ))
 
 (load-config-layers init-config-layers)
