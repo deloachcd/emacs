@@ -157,8 +157,3 @@
   )
 
 (use-package org-tree-slide)
-
-;; let's try out denote
-(use-package denote
-  :custom
-  (denote-directory (expand-file-name "denote" org-root)))

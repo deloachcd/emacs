@@ -76,6 +76,7 @@
                            projectile
                            flycheck
                            org
+                           denote
                            git
                            latex
                            restclient
