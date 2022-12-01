@@ -8,6 +8,16 @@
 ;; additional commands, like consult-buffer
 (use-package consult)
 
+(general-create-definer consult-bindings
+  :prefix "SPC c"
+  :states '(normal emacs visual)
+  :keymaps 'override)
+
+(consult-bindings
+  "" '(nil :which-key "consult")
+  "f" 'consult-find
+  "g" 'consult-grep)
+
 ;; orderless completion in vertico
 (use-package orderless
   :init
