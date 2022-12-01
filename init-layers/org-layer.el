@@ -15,6 +15,10 @@
   (visual-line-mode 1)
   (org-indent-mode 1))
 
+(defun org-table-recalculate-all ()
+  (interactive)
+  (org-table-recalculate 'iterate)) 
+
 (use-package org
   :defer
   :hook (org-mode . org-mode-setup)
@@ -27,7 +31,8 @@
                       :weight 'bold :height 1.1)
   :general
   ('normal org-mode-map "SPC m s" 'org-insert-src-block)
-  ('normal org-mode-map "SPC m e" 'org-babel-execute-src-block))
+  ('normal org-mode-map "SPC m e" 'org-babel-execute-src-block)
+  ('normal org-mode-map "SPC m r" 'org-table-recalculate-all))
 
 ;; presentations from emacs
 (use-package org-tree-slide
