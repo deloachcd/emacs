@@ -171,6 +171,27 @@
         (message "Couldn't find any daily notes files from the last year!")
       ;; if we get here, we found a previous file
       (find-file (expand-file-name previous-day-file org-dailies-dir)))))
+
+(setq org-dailies-memory-months 3)
+(defun org-dailies-forget ()
+  (interactive)
+  (let ((days-to-forget
+         (calc-eval (format "%d * 31" org-dailies-memory-months)))
+        (files-to-delete
+         (shell-command-to-string
+          (format "find %s -type f -mtime +%d"
+                  (file-truename org-dailies-dir)
+                  org-dailies-memory-months))))
+    (if (not (string= files-to-delete ""))
+        (when (or (yes-or-no-p (format
+                                "Forget everything not read in the last %d month(s)?"
+                                org-dailies-memory-months))
+                  (ignore (message "Aborted")))
+          (shell-command
+           (format "find -type f -mtime +%d -delete"
+                   (file-truename org-dailies-dir)
+                   org-dailies-memory-months)))
+      (message "No files old enough to forget!"))))
 ;; --
 
 ;; keybinds
