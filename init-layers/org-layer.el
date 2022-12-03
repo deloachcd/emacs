@@ -15,6 +15,14 @@
   (visual-line-mode 1)
   (org-indent-mode 1))
 
+(defun org-evil-add-checkbox-item ()
+  (interactive)
+  (with-current-buffer (current-buffer)
+    (end-of-line)
+    (org-meta-return)
+    (insert "[ ] ")
+    (evil-insert-state)))
+
 ;; this should really be a built-in...
 (defun org-table-recalculate-all ()
   (interactive)
@@ -33,7 +41,8 @@
   :general
   ('normal org-mode-map "SPC m s" 'org-insert-src-block)
   ('normal org-mode-map "SPC m e" 'org-babel-execute-src-block)
-  ('normal org-mode-map "SPC m r" 'org-table-recalculate-all))
+  ('normal org-mode-map "SPC m r" 'org-table-recalculate-all)
+  ('normal org-mode-map "SPC m c" 'org-evil-add-checkbox-item))
 
 ;; presentations from emacs
 (use-package org-tree-slide
