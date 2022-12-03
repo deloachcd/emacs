@@ -206,6 +206,11 @@
   "a l" 'org-agenda-list
   "a t" 'org-agenda-edit-tasks
   "a d" 'org-agenda-edit-dates
+  ;; org-dailies
+  "d t" 'org-dailies-edit-today
+  "d T" 'org-dailies-edit-template
+  "d p" 'org-dailies-edit-previous-day
+  "d b" 'org-dailies-edit-backlog
   )
 
 (use-package org-tree-slide)
