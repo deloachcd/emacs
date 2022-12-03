@@ -207,6 +207,7 @@
   "a t" 'org-agenda-edit-tasks
   "a d" 'org-agenda-edit-dates
   ;; org-dailies
+  "d" '(nil :which-key "dailies")
   "d t" 'org-dailies-edit-today
   "d T" 'org-dailies-edit-template
   "d p" 'org-dailies-edit-previous-day
