@@ -15,6 +15,7 @@
   (visual-line-mode 1)
   (org-indent-mode 1))
 
+;; this should really be a built-in...
 (defun org-table-recalculate-all ()
   (interactive)
   (org-table-recalculate 'iterate)) 
@@ -111,6 +112,57 @@
 (defun org-agenda-edit-dates ()
   (interactive)
   (find-file (expand-file-name "agenda/dates.org" org-root)))
+
+;; -- new simple daily goal tracking system
+(setq org-dailies-dir (concat org-root "/dailies"))
+
+(defun org-dailies-edit-today ()
+  (interactive)
+  (let ((filename (expand-file-name (format-time-string "%Y-%m-%d.org")
+                                    org-dailies-dir))
+        (template (expand-file-name "template.org" org-dailies-dir)))
+    (if (or (file-exists-p filename) (not (file-exists-p template)))
+        (find-file filename)
+      (progn
+        (copy-file template filename)
+        (find-file filename)))))
+
+(defun org-dailies-edit-backlog ()
+  (interactive)
+  (find-file (expand-file-name "backlog.org" org-dailies-dir)))
+
+(defun org-dailies-edit-template ()
+  (interactive)
+  (find-file (expand-file-name (format-time-string "template.org")
+                               org-dailies-dir)))
+
+(defun iterate-org-dailies-file-date (org-dailies-dated-file iterator)
+  (let* ((date-string (replace-regexp-in-string "\.org$" "" org-dailies-dated-file))
+         (calc-new-date (parse-time-string
+                         (calc-eval (format "<%s> + %d" date-string iterator))))
+         (changed-date-file (format "%d-%02d-%02d.org"
+                                    (nth 5 calc-new-date)
+                                    (nth 4 calc-new-date)
+                                    (nth 3 calc-new-date))))
+    changed-date-file))
+
+(defun org-dailies-edit-previous-day ()
+  (interactive)
+  (let* ((time-travel-days 0)
+         (time-travel-limit 5)
+         (previous-day-file (iterate-org-dailies-file-date
+                             (format-time-string "%Y-%m-%d.org") -1)))
+    ;; loop until we find a previous day's entry, or bottom out after a year
+    (while (and (< time-travel-days time-travel-limit)
+                (not (file-exists-p (expand-file-name previous-day-file
+                                                      org-dailies-dir))))
+      (setq time-travel-days (+ time-travel-days 1))
+      (setq previous-day-file (iterate-org-dailies-file-date previous-day-file -1)))
+    (if (= time-travel-days time-travel-limit)
+        (message "Couldn't find any daily notes files from the last year!")
+      ;; if we get here, we found a previous file
+      (find-file (expand-file-name previous-day-file org-dailies-dir)))))
+;; --
 
 ;; keybinds
 (general-create-definer org-bindings
