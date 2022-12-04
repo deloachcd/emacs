@@ -192,6 +192,18 @@
                    (file-truename org-dailies-dir)
                    org-dailies-memory-months)))
       (message "No files old enough to forget!"))))
+
+(defun org-dailies-push-unfinished-to-backlog ()
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (while (re-search-forward "- \\[[ ]\\]" nil t 1)
+        (progn
+          (move-end-of-line nil)
+          ;; point+1 contains the newline
+          (append-to-file (match-beginning 0) (+ (point) 1)
+                          (format "%s/backlog.org" org-dailies-dir))
+          (kill-whole-line)))))
 ;; --
 
 ;; keybinds
