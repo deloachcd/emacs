@@ -253,6 +253,7 @@
   "d t" 'org-dailies-edit-today
   "d T" 'org-dailies-edit-template
   "d p" 'org-dailies-edit-previous-day
+  "d P" 'org-dailies-push-unfinished-to-backlog
   "d b" 'org-dailies-edit-backlog
   )
 
