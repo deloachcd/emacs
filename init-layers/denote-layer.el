@@ -12,11 +12,12 @@
 ;;  (when (locate-library "denote") (consult-notes-denote-mode)))
 
 (defun denote-get-org-note-title (file)
-  (with-temp-buffer
-    (insert-file-contents file)
-    (goto-char (point-min))
-    (when (re-search-forward "^#\\+title\\s-*:\\ *" nil t 1)
-      (buffer-substring-no-properties (point) (line-end-position)))))
+  (if (file-exists-p file)
+      (with-temp-buffer
+        (insert-file-contents file)
+        (goto-char (point-min))
+        (when (re-search-forward "^#\\+title\\s-*:\\ *" nil t 1)
+          (buffer-substring-no-properties (point) (line-end-position))))))
 
 (defun denote-get-file-tags (file)
   ;; use regex to record match-end, and skip forward to the tags
