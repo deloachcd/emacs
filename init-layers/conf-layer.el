@@ -9,3 +9,8 @@
 
 ;; nginx config files
 (require 'nginx-mode)
+
+;; Dockerfiles
+(use-package dockerfile-mode
+  :config
+  (require 'dockerfile-mode))
