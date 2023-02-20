@@ -15,3 +15,5 @@
 (use-package dockerfile-mode
   :config
   (require 'dockerfile-mode))
+
+(use-package caddyfile-mode)
