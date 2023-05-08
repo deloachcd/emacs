@@ -25,40 +25,10 @@
   ;; places the git gutter outside the margins.
   (setq-default fringes-outside-margins t)
 
-  ;; modus operandi gets its own theming for git-gutter-fr, because it's built-in
-  ;; to emacs and thus it makes sense to theme it here
-  (if (string= (car custom-enabled-themes) "modus-operandi")
-      (progn
-        (fringe-helper-define 'git-gutter-fr:added nil
-          ".......x"
-          ".......x"
-          ".......x"
-          ".......x"
-          ".......x"
-          ".......x"
-          ".......x"
-          ".......x")
-        (fringe-helper-define 'git-gutter-fr:modified nil
-          ".......x"
-          ".......x"
-          ".......x"
-          ".......x"
-          ".......x"
-          ".......x"
-          ".......x"
-          ".......x")
-        
-        (set-face-attribute 'git-gutter-fr:added nil :background "#9bc99e"
-                            :foreground (face-attribute 'default :background))
-        (set-face-attribute 'git-gutter-fr:modified nil :background "#9bcfd9"
-                            :foreground (face-attribute 'default :background)))
-    ;; default behavior - thin fringe bitmaps lifted from doom emacs
-    (progn
-      (define-fringe-bitmap 'git-gutter-fr:added [224]
-        nil nil '(center repeated)
-      (define-fringe-bitmap 'git-gutter-fr:modified [224]
-        nil nil '(center repeated)))))
-
+  (define-fringe-bitmap 'git-gutter-fr:added [224]
+    nil nil '(center repeated))
+  (define-fringe-bitmap 'git-gutter-fr:modified [224]
+    nil nil '(center repeated))
   (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240]
     nil nil 'bottom)
 
