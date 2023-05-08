@@ -21,8 +21,9 @@
 ;; Load themes from ~/.emacs.d/themes
 (add-to-list 'custom-theme-load-path
              (expand-file-name "themes" user-emacs-directory))
-(use-package modus-themes
-  :init
+
+(defun tweak-modus-theme ()
+  "set options for modus-operandi theme once packages are loaded"
   ;; modus theme configuration
   ;; -------------------------
   ;; general options
@@ -37,9 +38,27 @@
           (2 . (1.05))
           (3 . (1.0))
           (4 . (1.0))))
-  (setq modus-themes-mixed-fonts t)
-  :config
-  (load-theme 'modus-operandi t))
+  (setq modus-themes-mixed-fonts t))
+
+;; Some light customization for built-in wombat theme
+(defun tweak-wombat-theme ()
+  "set options for wombat theme once packages are loaded"
+  (set-face-attribute 'persp-selected-face nil :foreground "Light Cyan")
+  (set-face-attribute 'git-gutter-fr:added nil :foreground "#9bc99e")
+  (set-face-attribute 'git-gutter-fr:modified nil :foreground "#9bcfd9")
+  (set-face-attribute 'highlight nil :foreground nil)
+  ;; amazingly, this hl-line-mode toggling actually works. truly magical
+  (global-hl-line-mode 1)
+  (set-face-attribute 'hl-line nil :underline nil :background "#363636")
+  (global-hl-line-mode 0))
+
+(setq emacs-init-theme 'wombat)
+
+(load-theme emacs-init-theme)
+(defun tweak-loaded-theme ()
+  "Apply theme tweaks after packages are loaded"
+  (cond ((string= emacs-init-theme 'wombat) (tweak-wombat-theme))
+        ((string= emacs-init-theme 'modus-operandi) (tweak-modus-theme))))
 
 (defun size-and-apply-fonts (fixed-pitch-font variable-pitch-font fixed-size variable-size)
   "Sets the and sizes the fixed and variable pitch fonts for current and new frames, accounting for whether or not the running display is HiDPI."

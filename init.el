@@ -95,6 +95,7 @@
                            ))
 
 (load-config-layers init-config-layers)
+(tweak-loaded-theme)  ;; NOTE: defined in aesthetics-layer.el
 
 ;; I lifted some code from DOOM emacs to disable customize, because they're
 ;; right on the money about `customize' being dogshit. 
