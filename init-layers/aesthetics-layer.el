@@ -47,6 +47,7 @@
   (set-face-attribute 'git-gutter-fr:added nil :foreground "#9bc99e")
   (set-face-attribute 'git-gutter-fr:modified nil :foreground "#9bcfd9")
   (set-face-attribute 'highlight nil :foreground nil)
+  (set-face-attribute 'region nil :underline t)
   ;; amazingly, this hl-line-mode toggling actually works. truly magical
   (global-hl-line-mode 1)
   (set-face-attribute 'hl-line nil :underline nil :background "#363636")
