@@ -55,21 +55,6 @@
   :hook (org-mode . org-bullets-mode)
   :config (setq org-bullets-bullet-list '("✸" "✱" "❖" "♦")))
 
-(use-package org-roam
-  :init
-  (setq org-roam-v2-ack t)
-  :custom
-  (org-roam-directory (expand-file-name "roam" org-root))
-  (org-roam-dailies-directory "journal/")
-  (org-roam-db-location
-   (expand-file-name (concat "org-roam." (system-name) ".db")
-                     org-roam-directory))
-  :config
-  (org-roam-db-autosync-enable)
-  (setq org-M-RET-may-split-line nil)
-  :general
-  ('normal org-mode-map "SPC m i" 'org-roam-node-insert))
-
 (use-package evil-org
   :defer
   ;;:after org
