@@ -17,3 +17,5 @@
   (require 'dockerfile-mode))
 
 (use-package caddyfile-mode)
+
+(use-package terraform-mode)
