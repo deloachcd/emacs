@@ -107,93 +107,9 @@
   (interactive)
   (find-file (expand-file-name "agenda/dates.org" org-root)))
 
-;; -- new simple daily goal tracking system
-(setq org-dailies-dir (concat org-root "/dailies"))
-
-(defun org-dailies-edit-today ()
-  (interactive)
-  (let ((filename (expand-file-name (format-time-string "%Y-%m-%d.org")
-                                    org-dailies-dir))
-        (template (expand-file-name "template.org" org-dailies-dir)))
-    (if (or (file-exists-p filename) (not (file-exists-p template)))
-        (find-file filename)
-      (progn
-        (copy-file template filename)
-        (find-file filename)))))
-
-(defun org-dailies-edit-backlog ()
-  (interactive)
-  (find-file (expand-file-name "backlog.org" org-dailies-dir)))
-
-(defun org-dailies-edit-template ()
-  (interactive)
-  (find-file (expand-file-name (format-time-string "template.org")
-                               org-dailies-dir)))
-
-(defun iterate-org-dailies-file-date (org-dailies-dated-file iterator)
-  (let* ((date-string (replace-regexp-in-string "\.org$" "" org-dailies-dated-file))
-         (calc-new-date (parse-time-string
-                         (calc-eval (format "<%s> + %d" date-string iterator))))
-         (changed-date-file (format "%d-%02d-%02d.org"
-                                    (nth 5 calc-new-date)
-                                    (nth 4 calc-new-date)
-                                    (nth 3 calc-new-date))))
-    changed-date-file))
-
-(defun org-dailies-edit-previous-day ()
-  (interactive)
-  (let* ((time-travel-days 0)
-         (time-travel-limit 5)
-         (previous-day-file (iterate-org-dailies-file-date
-                             (format-time-string "%Y-%m-%d.org") -1)))
-    ;; loop until we find a previous day's entry, or bottom out after a year
-    (while (and (< time-travel-days time-travel-limit)
-                (not (file-exists-p (expand-file-name previous-day-file
-                                                      org-dailies-dir))))
-      (setq time-travel-days (+ time-travel-days 1))
-      (setq previous-day-file (iterate-org-dailies-file-date previous-day-file -1)))
-    (if (= time-travel-days time-travel-limit)
-        (message "Couldn't find any daily notes files from the last year!")
-      ;; if we get here, we found a previous file
-      (find-file (expand-file-name previous-day-file org-dailies-dir)))))
-
-(setq org-dailies-memory-months 3)
-(defun org-dailies-forget ()
-  (interactive)
-  (let ((days-to-forget
-         (calc-eval (format "%d * 31" org-dailies-memory-months)))
-        (files-to-delete
-         (shell-command-to-string
-          (format "find %s -type f -mtime +%d"
-                  (file-truename org-dailies-dir)
-                  org-dailies-memory-months))))
-    (if (not (string= files-to-delete ""))
-        (when (or (yes-or-no-p (format
-                                "Forget everything not read in the last %d month(s)?"
-                                org-dailies-memory-months))
-                  (ignore (message "Aborted")))
-          (shell-command
-           (format "find -type f -mtime +%d -delete"
-                   (file-truename org-dailies-dir)
-                   org-dailies-memory-months)))
-      (message "No files old enough to forget!"))))
-
-(defun org-dailies-push-unfinished-to-backlog ()
-  (interactive)
-  (save-excursion
-    (goto-char (point-min))
-    (while (re-search-forward "- \\[[ ]\\]" nil t 1)
-        (progn
-          (move-end-of-line nil)
-          ;; point+1 contains the newline
-          (append-to-file (match-beginning 0) (+ (point) 1)
-                          (format "%s/backlog.org" org-dailies-dir))
-          (kill-whole-line)))))
-;; --
-
 ;; keybinds
-(general-create-definer org-bindings
-  :prefix "SPC o"
+(general-create-definer org-agenda-bindings
+  :prefix "SPC a"
   :states '(normal emacs)
   :keymaps 'override)
 
@@ -206,40 +122,13 @@
 
 ;; org babel scratch buffer
 (setq inhibit-startup-message nil)
-;;(setq initial-major-mode 'org-mode)
-;;(setq initial-scratch-message
-;;      (with-temp-buffer
-;;        (let* ((rnum (number-to-string (+ (random 3) 1)))
-;;               (banner-file (concat "res/banners/" rnum ".txt")))
-;;          (insert-file-contents (expand-file-name "res/org/scratch.org"
-;;                                                  user-emacs-directory))
-;;          (insert-file-contents (expand-file-name banner-file
-;;                                                  user-emacs-directory))
-;;          (insert "#+begin_src python")
-;;          (insert "\n")
-;;          (insert "\"\"\"")
-;;          (insert "\n")
-;;          (buffer-string))))
 
-(org-bindings
-  "" '(nil :which-key "org")
-  ;; org-roam
-  "r" '(nil :which-key "roam")
-  "r f" 'org-roam-node-find
-  "r t" 'org-roam-dailies-goto-today
+(org-agenda-bindings
+  "" '(nil :which-key "agenda")
   ;; org-agenda
-  "a" '(nil :which-key "agenda")
-  "a a" 'org-agenda
-  "a l" 'org-agenda-list
-  "a t" 'org-agenda-edit-tasks
-  "a d" 'org-agenda-edit-dates
-  ;; org-dailies
-  "d" '(nil :which-key "dailies")
-  "d t" 'org-dailies-edit-today
-  "d T" 'org-dailies-edit-template
-  "d p" 'org-dailies-edit-previous-day
-  "d P" 'org-dailies-push-unfinished-to-backlog
-  "d b" 'org-dailies-edit-backlog
-  )
+  "a" 'org-agenda
+  "l" 'org-agenda-list
+  "t" 'org-agenda-edit-tasks
+  "d" 'org-agenda-edit-dates)
 
 (use-package org-tree-slide)
