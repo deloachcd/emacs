@@ -7,16 +7,6 @@
 (use-package blacken
   :hook (python-mode . blacken-mode))
 
-(require 'general-keybinds-layer)
-(language-bindings
-  ;; Python bindings
-  "p" '(nil :which-key "python")
-  "p r" 'run-python
-  "p m" 'python-mode
-  "p s" '(nil :which-key "shell")
-  "p s b" 'python-shell-send-buffer
-  "p s r" 'python-shell-send-region)
-
 (require 'flycheck-layer)
 (defun python-mode-enable-flycheck-h ()
   "Enable flycheck for python buffers"

@@ -44,21 +44,3 @@
 
 (add-hook 'python-mode-hook 'python-mode-hook-additions)
 (setq org-babel-python-command "/usr/bin/env python3")
-
-;; LSP keybinds
-(general-create-definer language-bindings
-  :prefix "SPC l"
-  :states '(normal emacs)
-  :keymaps 'override)
-
-(language-bindings
-  "" '(nil :which-key "lang")
-  ;; Python bindings
-  "p" '(nil :which-key "python")
-  "p r" 'run-python
-  "p m" 'python-mode
-  "p s b" 'python-shell-send-buffer
-  "p s r" 'python-shell-send-region)
-
-(help-bindings
-  "d" 'lsp-ui-doc-mode)
