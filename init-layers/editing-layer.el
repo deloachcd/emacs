@@ -78,7 +78,7 @@
 (setq ring-bell-function 'ignore)
 
 ;; Prettify symbols globally
-(global-prettify-symbols-mode t)
+;;(global-prettify-symbols-mode t)
 
 ;; Type "y" or "n" instead of "yes" or "no" in minibuffer
 (defalias 'yes-or-no-p 'y-or-n-p)
