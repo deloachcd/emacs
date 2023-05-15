@@ -4,15 +4,6 @@
 (use-package magit
   :defer)
 
-(general-create-definer magit-bindings
-  :prefix "SPC g"
-  :states '(normal emacs)
-  :keymaps 'override)
-
-(magit-bindings
-  "" '(nil :which-key "git")
-  "g" 'magit-status)
-
 (use-package git-gutter-fringe
   ;;:hook (prog-mode . git-gutter-mode)
   :init
