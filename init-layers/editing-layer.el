@@ -64,6 +64,7 @@
                               show-paren-mode))
 
 (add-hooks 'prog-mode-hook prog-mode-minor-modes)
+(add-hooks 'latex-mode-hook prog-mode-minor-modes)
 (add-hooks 'conf-mode-hook prog-mode-minor-modes)
 (add-hooks 'text-mode-hook text-mode-minor-modes)
 
