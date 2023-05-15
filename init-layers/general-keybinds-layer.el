@@ -29,7 +29,7 @@
   :keymaps 'override)
 
 (root-bindings
-  "SPC" 'execute-extended-command
+  ;;"SPC" 'execute-extended-command
   "m" '(nil :which-key "method"))
 
 ;; god-mode acts weird with C-x C-e for some reason, so I bind this
