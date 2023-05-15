@@ -64,9 +64,11 @@
   (set-face-attribute 'rainbow-delimiters-depth-5-face nil :foreground "#baff80")
   (set-face-attribute 'rainbow-delimiters-depth-8-face nil :foreground "#7a716e"))
 
-(setq emacs-init-theme 'wombat)
+(use-package material-theme
+  :config
+  (setq emacs-init-theme 'material)
+  (load-theme emacs-init-theme t))
 
-(load-theme emacs-init-theme t)
 (defun tweak-loaded-theme ()
   "Apply theme tweaks after packages are loaded"
   (cond ((string= emacs-init-theme 'wombat) (tweak-wombat-theme))
