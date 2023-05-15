@@ -29,12 +29,15 @@
   :keymaps 'override)
 
 (root-bindings
-  ;;"SPC" 'execute-extended-command
+  "SPC" 'execute-extended-command
   "m" '(nil :which-key "method"))
 
 ;; god-mode acts weird with C-x C-e for some reason, so I bind this
 (general-define-key :states 'normal :keymaps 'emacs-lisp-mode-map
                     "SPC m e" 'eval-last-sexp)
+(general-define-key :states 'visual
+                    :keymaps '(prog-mode-map conf-mode-map latex-mode-map)
+                    "SPC m c" 'comment-line)
 
 (defun sudo-find-file (file-name)
   "Like find file, but opens the file as root."
