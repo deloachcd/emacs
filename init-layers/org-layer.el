@@ -35,6 +35,7 @@
   (setf org-blank-before-new-entry '((heading . nil) (plain-list-item . nil)))
   (setq org-ellipsis " ▾")
   (set-face-underline 'org-ellipsis nil)
+  (setq org-link-descriptive nil)
   ;; make sure no theme makes our titles overly large
   (set-face-attribute 'org-document-title nil :inherit 'variable-pitch
                       :weight 'bold :height 1.1)
