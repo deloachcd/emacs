@@ -36,7 +36,7 @@
 (general-define-key :states 'normal :keymaps 'emacs-lisp-mode-map
                     "SPC m e" 'eval-last-sexp)
 (general-define-key :states 'visual
-                    :keymaps '(prog-mode-map conf-mode-map latex-mode-map)
+                    :keymaps '(prog-mode-map conf-mode-map tex-mode-map)
                     "SPC m c" 'comment-line)
 
 (defun sudo-find-file (file-name)
