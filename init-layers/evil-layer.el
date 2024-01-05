@@ -1,7 +1,8 @@
 ;; All configuration related to setting up evil-mode and making sure
 ;; it plays nicely with other packages should go here
-
-(use-package undo-tree)
+(use-package undo-tree
+  :config
+  (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo"))))
 
 ;; Vim-like bindings
 (use-package evil
@@ -26,10 +27,3 @@
   :defer
   :hook (prog-mode . evil-surround-mode)
   :hook (text-mode . evil-surround-mode))
-
-(use-package god-mode
-  :after evil
-  :config
-  (require 'evil-god-state)
-  (general-def 'normal global-map "," 'evil-execute-in-god-state)
-  (which-key-enable-god-mode-support))

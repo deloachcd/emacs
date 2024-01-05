@@ -32,19 +32,6 @@
   "SPC" 'execute-extended-command
   "m" '(nil :which-key "method"))
 
-;; god-mode acts weird with C-x C-e for some reason, so I bind this
-(general-define-key :states 'normal :keymaps 'emacs-lisp-mode-map
-                    "SPC m e" 'eval-last-sexp)
-(general-define-key :states 'visual
-                    :keymaps '(prog-mode-map conf-mode-map tex-mode-map)
-                    "SPC m c" 'comment-line)
-
-(defun sudo-find-file (file-name)
-  "Like find file, but opens the file as root."
-  (interactive "FFind file (sudo): ")
-  (let ((tramp-file-name (concat "/sudo::" (expand-file-name file-name))))
-    (find-file tramp-file-name)))
-
 (general-create-definer window-management-bindings
   :prefix "SPC w"
   :states '(normal emacs)

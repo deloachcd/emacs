@@ -1,6 +1,5 @@
-(setq denote-directory "~/Sync/Documents/org/denote")
+(setq denote-directory "~/Documents/org/denote")
 
-;; let's try out denote
 (use-package denote
   :general
   ('normal org-mode-map "SPC m d" 'denote-link))

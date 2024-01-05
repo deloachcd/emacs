@@ -60,42 +60,33 @@
   (dolist (layer (get-platform-layers layers))
     (load (concat (symbol-name layer) "-layer.el"))))
 
+(setq emacs-init-theme 'material-light)
 ;; The bulk of configuration happens in these layers
 (setq init-config-layers '(;; theming and font scaling
                            aesthetics
+                           ;; mainly just vertico
+                           completion
                            ;; which-key and general.el, keybindings for builtins
                            general-keybinds
-                           ;; electric pairs/indent ripped off from DOOM emacs
-                           electric
                            ;; general editor configuration happens here
                            editing
                            ;; these layers target specific (sets of) extension(s)
-                           completion
-                           evil-god
-                           helpful
-                           projectile
-                           flycheck
+                           evil
                            org
                            denote
-                           git
-                           latex
                            restclient
                            perspective
-                           shell
-                           (:if-linux vterm)
-                           webshit
-                           ;; language-specific layers
-                           sh
-                           emacs-lisp
-                           python
-                           c
-                           glsl
-                           conf
-                           go
                            ))
 
 (load-config-layers init-config-layers)
+(load-theme emacs-init-theme t)
 (tweak-loaded-theme)  ;; NOTE: defined in aesthetics-layer.el
+(setq original-initial-scratch-message initial-scratch-message)
+(setq initial-scratch-message
+      (concat ";; Welcome to GNU Emacs " emacs-version "\n;;\n"
+              original-initial-scratch-message))
+(setq emacs-startup-hook (lambda () (setq initial-scratch-message
+                                          original-initial-scratch-message)))
 
 ;; I lifted some code from DOOM emacs to disable customize, because they're
 ;; right on the money about `customize' being dogshit. 

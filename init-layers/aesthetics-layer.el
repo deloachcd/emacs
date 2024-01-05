@@ -40,12 +40,9 @@
           (4 . (1.0))))
   (setq modus-themes-mixed-fonts t))
 
-;; Some light customization for built-in wombat theme
 (defun tweak-wombat-theme ()
   "set options for wombat theme once packages are loaded"
   (set-face-attribute 'persp-selected-face nil :foreground "Light Cyan")
-  (set-face-attribute 'git-gutter-fr:added nil :foreground "#9bc99e")
-  (set-face-attribute 'git-gutter-fr:modified nil :foreground "#9bcfd9")
   (set-face-attribute 'highlight nil :foreground nil)
   (set-face-attribute 'link nil :foreground "#91d6d8")
   ;; amazingly, this hl-line-mode toggling actually works. truly magical
@@ -53,27 +50,15 @@
   (set-face-attribute 'hl-line nil :underline nil :background "#363636")
   (global-hl-line-mode 0))
 
-(defun tweak-material-theme ()
-  "I tweak the material theme here, but I don't even install it by default"
-  (set-face-attribute 'persp-selected-face nil :foreground "Light Cyan")
-  (set-face-attribute 'git-gutter-fr:added nil :foreground "#9bc99e")
-  (set-face-attribute 'git-gutter-fr:modified nil :foreground "#9bcfd9")
-  (require 'rainbow-delimiters)
-  (set-face-attribute 'rainbow-delimiters-depth-1-face nil :foreground "#f36c60")
-  (set-face-attribute 'rainbow-delimiters-depth-2-face nil :foreground "#3aa1f2")
-  (set-face-attribute 'rainbow-delimiters-depth-5-face nil :foreground "#baff80")
-  (set-face-attribute 'rainbow-delimiters-depth-8-face nil :foreground "#7a716e"))
-
-(use-package material-theme
+(use-package material-theme)
+(use-package minions
   :config
-  (setq emacs-init-theme 'material)
-  (load-theme emacs-init-theme t))
+  (minions-mode 1))
 
 (defun tweak-loaded-theme ()
   "Apply theme tweaks after packages are loaded"
   (cond ((string= emacs-init-theme 'wombat) (tweak-wombat-theme))
-        ((string= emacs-init-theme 'modus-operandi) (tweak-modus-theme))
-        ((string= emacs-init-theme 'material) (tweak-material-theme))))
+        ((string= emacs-init-theme 'modus-operandi) (tweak-modus-theme))))
 
 (defun size-and-apply-fonts (fixed-pitch-font variable-pitch-font fixed-size variable-size)
   "Sets the and sizes the fixed and variable pitch fonts for current and new frames, accounting for whether or not the running display is HiDPI."
@@ -105,23 +90,6 @@
     (size-and-apply-fonts "Menlo" "Helvetica" 140 150)
   (size-and-apply-fonts "Ubuntu Mono" "Noto Sans" 130 120))
 (set-frame-defaults 88 36)
-
-(use-package mood-line
-  :init
-  (setq mood-line-show-encoding-information t)
-  (setq mood-line-show-eol-style t)
-  :config
-  (mood-line-mode))
-
-(use-package dashboard
-  :init
-  (setq dashboard-center-content t)
-  (setq dashboard-set-footer nil)
-  ;;(setq dashboard-startup-banner 1)
-  :config
-  (dashboard-setup-startup-hook)
-  (setq dashboard-items '((recents . 5)
-                          (projects . 5))))
 
 ;; tab bar aesthetic configuration
 (setq tab-bar-new-button-show nil)

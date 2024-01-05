@@ -121,9 +121,6 @@
    (python . t)))
 (setq org-confirm-babel-evaluate nil)
 
-;; org babel scratch buffer
-(setq inhibit-startup-message nil)
-
 (org-agenda-bindings
   "" '(nil :which-key "agenda")
   ;; org-agenda
