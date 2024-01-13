@@ -1,5 +1,3 @@
-(setq denote-directory "~/Documents/org/denote")
-
 (use-package denote
   :general
   ('normal org-mode-map "SPC m d" 'denote-link))
@@ -47,6 +45,22 @@
          (title-pair-list (mapcar #'denote-get-org-note-pair files))
          (titles (mapcar #'car title-pair-list)))
     (find-file (cdr (assoc (completing-read "Find Note: " titles) title-pair-list)))))
+
+(defvar denote-silo-directories
+  `("~/Documents/org/denote/share"
+    "~/Documents/org/denote/personal"
+    "~/Documents/org/denote/work")
+  "List of file paths pointing to my Denote silos.
+  This is a list of strings.")
+
+(defun denote-pick-silo (silo)
+  "Select SILO to run Denote COMMANDs in.
+  SILO is a file path from `denote-silo-directories'."
+  (interactive
+   (list (completing-read "Select a silo: " denote-silo-directories nil t)))
+  (setq denote-directory silo))
+
+(setq-default denote-directory "~/Documents/org/denote/share")
 
 (general-create-definer denote-bindings
   :prefix "SPC d"
