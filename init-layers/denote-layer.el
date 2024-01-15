@@ -70,4 +70,5 @@
 (denote-bindings
   "" '(nil :which-key "denote")
   "n" 'denote
-  "d" 'denote-search-org-notes)
+  "d" 'denote-search-org-notes
+  "s" 'denote-pick-silo)
