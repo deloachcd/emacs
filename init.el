@@ -66,6 +66,8 @@
                            aesthetics
                            ;; mainly just vertico
                            completion
+			   ;; syntax highlighting for config file types
+			   conf
                            ;; which-key and general.el, keybindings for builtins
                            general-keybinds
                            ;; general editor configuration happens here
