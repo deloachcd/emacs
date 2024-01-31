@@ -78,6 +78,7 @@
                            denote
                            rclone
                            restclient
+                           git
                            perspective
                            ))
 
