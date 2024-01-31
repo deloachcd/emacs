@@ -76,6 +76,7 @@
                            evil
                            org
                            denote
+                           rclone
                            restclient
                            perspective
                            ))
